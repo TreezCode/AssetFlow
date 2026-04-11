@@ -1,0 +1,96 @@
+'use client'
+
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
+
+const quickLinks = [
+  { name: 'Home', href: '#hero' },
+  { name: 'How It Works', href: '#how-it-works' },
+  { name: 'Features', href: '#features' },
+  { name: 'Pricing', href: '#pricing' },
+]
+
+export function Footer() {
+  const pathname = usePathname()
+  const isLanding = pathname === '/'
+
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (isLanding && href.startsWith('#')) {
+      e.preventDefault()
+      const id = href.replace('#', '')
+      document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
+    }
+  }
+
+  return (
+    <footer className="bg-[#0a0a0a] border-t border-white/10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div>
+            <span className="text-lg font-bold bg-gradient-to-r from-[#915eff] to-[#00d4ff] bg-clip-text text-transparent">
+              AssetFlow
+            </span>
+            <p className="mt-2 text-sm text-gray-400">
+              Product Image Renaming Tool
+            </p>
+            <p className="mt-4 text-xs text-gray-500">
+              Built by{' '}
+              <a
+                href="https://buildwithtreez.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-[#00d4ff] hover:text-[#915eff] transition-colors duration-300"
+              >
+                Build With Treez
+              </a>
+            </p>
+          </div>
+
+          <div>
+            <h3 className="text-sm font-semibold text-white mb-4">Quick Links</h3>
+            <nav className="flex flex-col gap-2">
+              {quickLinks.map((link) => (
+                <a
+                  key={link.name}
+                  href={isLanding ? link.href : `/${link.href}`}
+                  onClick={(e) => handleNavClick(e, link.href)}
+                  className="group text-sm text-gray-400 hover:text-[#00d4ff] transition-colors duration-300 inline-flex items-center gap-2"
+                >
+                  <span className="w-1 h-1 rounded-full bg-gray-600 group-hover:bg-[#00d4ff] transition-colors duration-300" />
+                  {link.name}
+                </a>
+              ))}
+              <Link
+                href="/app"
+                className="group text-sm text-gray-400 hover:text-[#00d4ff] transition-colors duration-300 inline-flex items-center gap-2"
+              >
+                <span className="w-1 h-1 rounded-full bg-gray-600 group-hover:bg-[#00d4ff] transition-colors duration-300" />
+                App
+              </Link>
+            </nav>
+          </div>
+
+          <div>
+            <h3 className="text-sm font-semibold text-white mb-4">Get Started</h3>
+            <p className="text-sm text-gray-400 mb-4">
+              Start renaming your product images for free. No signup required.
+            </p>
+            <Link
+              href="/app"
+              className="inline-flex items-center gap-2 text-sm font-medium text-[#915eff] hover:text-[#00d4ff] transition-colors duration-300"
+            >
+              Try It Free
+              <span aria-hidden="true">&rarr;</span>
+            </Link>
+          </div>
+        </div>
+
+        <div className="mt-8 pt-8 border-t border-white/10 text-center">
+          <p className="text-gray-500 text-sm">
+            &copy; {new Date().getFullYear()} AssetFlow. All rights reserved.
+          </p>
+        </div>
+      </div>
+    </footer>
+  )
+}

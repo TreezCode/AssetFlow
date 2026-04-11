@@ -1,0 +1,86 @@
+'use client'
+
+import { motion } from 'framer-motion'
+import { ShoppingBag, Paintbrush, Camera, Briefcase } from 'lucide-react'
+import { landingCopy } from '@/lib/landing-copy'
+
+const icons = {
+  'Shopify store owners': ShoppingBag,
+  'Etsy sellers': Paintbrush,
+  'Product photographers': Camera,
+  Freelancers: Briefcase,
+}
+
+export function Audience() {
+  const { heading, subheading, personas, reinforcement } = landingCopy.audience
+
+  return (
+    <section className="py-16 sm:py-20 md:py-28 lg:py-32 bg-[#0a0a0a]/50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Section Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.8 }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6 font-[family-name:var(--font-space-grotesk)]">
+            {heading}
+          </h2>
+          <p className="text-base sm:text-lg md:text-xl text-gray-400 max-w-3xl mx-auto">
+            {subheading}
+          </p>
+        </motion.div>
+
+        {/* Persona Cards */}
+        <motion.div
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.1 }}
+          variants={{
+            hidden: { opacity: 0 },
+            show: {
+              opacity: 1,
+              transition: { staggerChildren: 0.1 },
+            },
+          }}
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 mb-12"
+        >
+          {personas.map((persona) => {
+            const Icon = icons[persona.title as keyof typeof icons]
+            return (
+              <motion.div
+                key={persona.title}
+                variants={{
+                  hidden: { opacity: 0, y: 20 },
+                  show: { opacity: 1, y: 0 },
+                }}
+                className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-xl p-6 hover:bg-white/10 hover:border-[#915eff]/30 hover:shadow-lg hover:shadow-[#915eff]/20 transition-all duration-300 text-center"
+              >
+                <div className="w-12 h-12 mx-auto mb-4 rounded-lg bg-gradient-to-br from-[#915eff]/20 to-[#00d4ff]/20 flex items-center justify-center">
+                  <Icon className="w-6 h-6 text-[#00d4ff]" />
+                </div>
+                <h3 className="text-lg font-semibold text-white mb-2">
+                  {persona.title}
+                </h3>
+                <p className="text-sm text-gray-400">{persona.description}</p>
+              </motion.div>
+            )
+          })}
+        </motion.div>
+
+        {/* Reinforcement */}
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+          className="text-lg sm:text-xl text-center text-gray-300 max-w-2xl mx-auto"
+        >
+          {reinforcement}
+        </motion.p>
+      </div>
+    </section>
+  )
+}
