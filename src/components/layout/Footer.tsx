@@ -23,11 +23,11 @@ export function Footer() {
   }
 
   return (
-    <footer className="bg-[#0a0a0a] border-t border-white/10">
+    <footer className="bg-deep-space border-t border-white/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div>
-            <span className="text-lg font-bold bg-gradient-to-r from-[#915eff] to-[#00d4ff] bg-clip-text text-transparent">
+            <span className="text-lg font-bold bg-linear-to-r from-treez-purple to-treez-cyan bg-clip-text text-transparent">
               AssetFlow
             </span>
             <p className="mt-2 text-sm text-gray-400">
@@ -39,7 +39,7 @@ export function Footer() {
                 href="https://buildwithtreez.com"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[#00d4ff] hover:text-[#915eff] transition-colors duration-300"
+                className="text-treez-cyan hover:text-treez-purple transition-colors duration-300"
               >
                 Build With Treez
               </a>
@@ -54,17 +54,17 @@ export function Footer() {
                   key={link.name}
                   href={isLanding ? link.href : `/${link.href}`}
                   onClick={(e) => handleNavClick(e, link.href)}
-                  className="group text-sm text-gray-400 hover:text-[#00d4ff] transition-colors duration-300 inline-flex items-center gap-2"
+                  className="group text-sm text-gray-400 hover:text-treez-cyan transition-colors duration-300 inline-flex items-center gap-2"
                 >
-                  <span className="w-1 h-1 rounded-full bg-gray-600 group-hover:bg-[#00d4ff] transition-colors duration-300" />
+                  <span className="w-1 h-1 rounded-full bg-gray-600 group-hover:bg-treez-cyan transition-colors duration-300" />
                   {link.name}
                 </a>
               ))}
               <Link
                 href="/app"
-                className="group text-sm text-gray-400 hover:text-[#00d4ff] transition-colors duration-300 inline-flex items-center gap-2"
+                className="group text-sm text-gray-400 hover:text-treez-cyan transition-colors duration-300 inline-flex items-center gap-2"
               >
-                <span className="w-1 h-1 rounded-full bg-gray-600 group-hover:bg-[#00d4ff] transition-colors duration-300" />
+                <span className="w-1 h-1 rounded-full bg-gray-600 group-hover:bg-treez-cyan transition-colors duration-300" />
                 App
               </Link>
             </nav>
@@ -77,7 +77,7 @@ export function Footer() {
             </p>
             <Link
               href="/app"
-              className="inline-flex items-center gap-2 text-sm font-medium text-[#915eff] hover:text-[#00d4ff] transition-colors duration-300"
+              className="inline-flex items-center gap-2 text-sm font-medium text-treez-purple hover:text-treez-cyan transition-colors duration-300"
             >
               Try It Free
               <span aria-hidden="true">&rarr;</span>

@@ -32,12 +32,12 @@ export function Button({
   if (variant === 'primary') {
     return (
       <button
-        className={`group relative ${base} bg-gradient-to-r from-[#915eff] to-[#ff6b9d] text-white shadow-lg hover:shadow-[#915eff]/50 hover:scale-105 overflow-hidden ${disabledStyles} ${className}`}
+        className={`group relative ${base} bg-linear-to-r from-treez-purple to-treez-pink text-white shadow-lg hover:shadow-treez-purple/50 hover:scale-105 overflow-hidden ${disabledStyles} ${className}`}
         disabled={disabled}
         {...props}
       >
         <span className="relative z-10">{children}</span>
-        <div className="absolute inset-0 bg-gradient-to-r from-[#ff6b9d] to-[#915eff] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+        <div className="absolute inset-0 bg-linear-to-r from-treez-pink to-treez-purple opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
       </button>
     )
   }
@@ -45,7 +45,7 @@ export function Button({
   if (variant === 'secondary') {
     return (
       <button
-        className={`${base} border-2 border-[#00d4ff] text-[#00d4ff] hover:bg-[#00d4ff]/10 hover:scale-105 hover:shadow-lg hover:shadow-[#00d4ff]/30 bg-[#0a0a0a]/80 backdrop-blur-sm ${disabledStyles} ${className}`}
+        className={`${base} border-2 border-treez-cyan text-treez-cyan hover:bg-treez-cyan/10 hover:shadow-lg hover:shadow-treez-cyan/30 hover:scale-105 ${disabledStyles} ${className}`}
         disabled={disabled}
         {...props}
       >
@@ -56,7 +56,7 @@ export function Button({
 
   return (
     <button
-      className={`${base} border border-white/10 hover:border-[#915eff] bg-white/5 hover:bg-[#915eff]/10 hover:scale-110 hover:shadow-lg hover:shadow-[#915eff]/30 ${disabledStyles} ${className}`}
+      className={`${base} border border-white/10 hover:border-treez-purple bg-white/5 hover:bg-treez-purple/10 hover:shadow-lg hover:shadow-treez-purple/30 hover:scale-110 ${disabledStyles} ${className}`}
       disabled={disabled}
       {...props}
     >

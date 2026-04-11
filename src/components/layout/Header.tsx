@@ -29,11 +29,11 @@ export function Header() {
   }
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-[#0a0a0a]/95 backdrop-blur-xl border-b border-white/10 transition-all duration-300">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-deep-space/95 backdrop-blur-xl border-b border-white/10 transition-all duration-300">
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <Link href="/" className="flex items-center gap-2">
-            <span className="text-xl font-bold bg-gradient-to-r from-[#915eff] to-[#00d4ff] bg-clip-text text-transparent">
+            <span className="text-xl font-bold bg-linear-to-r from-treez-purple to-treez-cyan bg-clip-text text-transparent">
               AssetFlow
             </span>
           </Link>
@@ -44,7 +44,7 @@ export function Header() {
                 <a
                   href={isLanding ? link.href : `/${link.href}`}
                   onClick={(e) => handleNavClick(e, link.href)}
-                  className="text-sm font-medium text-gray-400 hover:text-[#00d4ff] transition-colors duration-300"
+                  className="text-sm font-medium text-gray-400 hover:text-treez-cyan transition-colors duration-300"
                 >
                   {link.name}
                 </a>
@@ -53,7 +53,7 @@ export function Header() {
             <li>
               <Link
                 href="/app"
-                className="text-sm font-medium text-gray-400 hover:text-[#00d4ff] transition-colors duration-300"
+                className="text-sm font-medium text-gray-400 hover:text-treez-cyan transition-colors duration-300"
               >
                 App
               </Link>
@@ -69,7 +69,7 @@ export function Header() {
           </div>
 
           <button
-            className="md:hidden p-2 rounded-lg border border-white/10 hover:border-[#915eff] transition-colors duration-300"
+            className="md:hidden p-2 rounded-lg border border-white/10 hover:border-treez-purple transition-colors duration-300"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
           >
@@ -89,7 +89,7 @@ export function Header() {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="md:hidden border-t border-white/10 bg-[#0a0a0a]/98 backdrop-blur-xl overflow-hidden"
+            className="md:hidden border-t border-white/10 bg-deep-space/98 backdrop-blur-xl overflow-hidden"
           >
             <div className="px-4 py-4 space-y-3">
               {navLinks.map((link) => (
