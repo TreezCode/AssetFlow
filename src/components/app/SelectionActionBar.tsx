@@ -99,79 +99,83 @@ export function SelectionActionBar() {
         animate={{ y: 0, opacity: 1 }}
         exit={{ y: -100, opacity: 0 }}
         transition={{ duration: 0.2 }}
-        className="sticky top-20 z-30 mb-6"
+        className="sticky top-16 sm:top-20 z-30 mb-4 sm:mb-6"
       >
-        <div className="bg-treez-purple/90 backdrop-blur-xl border border-treez-purple/50 
-          rounded-xl p-4 shadow-lg shadow-treez-purple/20">
-          <div className="flex flex-col sm:flex-row items-center gap-3">
-            {/* Selection Count */}
-            <div className="flex items-center gap-2 flex-1">
-              <div className="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center">
-                <span className="text-xs font-bold text-white">{count}</span>
+        <div className="bg-treez-purple/95 backdrop-blur-xl border border-treez-purple/50 
+          rounded-lg sm:rounded-xl p-2.5 sm:p-4 shadow-lg shadow-treez-purple/20">
+          <div className="flex flex-col gap-2 sm:gap-3">
+            {/* Selection Count - Compact on mobile */}
+            <div className="flex items-center justify-between gap-2 w-full">
+              <div className="flex items-center gap-2">
+                <div className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-white/20 flex items-center justify-center">
+                  <span className="text-xs font-bold text-white">{count}</span>
+                </div>
+                <span className="text-white font-medium text-sm sm:text-base">
+                  {count} selected
+                </span>
               </div>
-              <span className="text-white font-medium">
-                {count} image{count !== 1 ? 's' : ''} selected
-              </span>
               
-              {/* Select All button - appears when not all images in context are selected */}
+              {/* Select All button - compact on mobile */}
               {!allSelectedInContext && totalInContext > 1 && (
                 <button
                   onClick={() => selectAllInContext(selectionContext || undefined)}
-                  className="ml-2 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg
+                  className="inline-flex items-center gap-1 px-2 py-1 rounded-md
                     bg-white/10 hover:bg-white/20 text-white text-xs
                     transition-colors duration-200 border border-white/20"
                 >
-                  <CheckSquare className="w-3.5 h-3.5" />
-                  Select All ({totalInContext})
+                  <CheckSquare className="w-3 h-3 sm:w-3.5 sm:h-3.5" />
+                  <span className="hidden sm:inline">Select All</span>
+                  <span className="sm:hidden">All</span> ({totalInContext})
                 </button>
               )}
             </div>
 
-            {/* Actions */}
-            <div className="flex flex-wrap items-center gap-2">
+            {/* Actions - Compact grid on mobile */}
+            <div className="flex flex-wrap items-center gap-1.5 sm:gap-2">
               {!showSkuInput ? (
                 <>
                   <button
                     onClick={() => setShowSkuInput(true)}
-                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg
-                      bg-white/10 hover:bg-white/20 text-white text-sm
+                    className="inline-flex items-center gap-1 sm:gap-1.5 px-2 sm:px-3 py-1 sm:py-1.5 rounded-md sm:rounded-lg
+                      bg-white/10 hover:bg-white/20 text-white text-xs sm:text-sm
                       transition-colors duration-200"
                   >
-                    <Tag className="w-4 h-4" />
-                    {noneHaveSku ? 'Assign SKU' : 'Change SKU'}
+                    <Tag className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+                    <span className="hidden sm:inline">{noneHaveSku ? 'Assign SKU' : 'Change SKU'}</span>
+                    <span className="sm:hidden">SKU</span>
                   </button>
 
                   {/* Only show Remove SKU if ALL selected images have SKU */}
                   {allHaveSku && (
                     <button
                       onClick={handleRemoveSku}
-                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg
-                        bg-white/10 hover:bg-white/20 text-white text-sm
+                      className="inline-flex items-center gap-1 sm:gap-1.5 px-2 sm:px-3 py-1 sm:py-1.5 rounded-md sm:rounded-lg
+                        bg-white/10 hover:bg-white/20 text-white text-xs sm:text-sm
                         transition-colors duration-200"
                     >
-                      <XCircle className="w-4 h-4" />
-                      Remove SKU
+                      <XCircle className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+                      <span className="hidden sm:inline">Remove</span>
                     </button>
                   )}
 
                   <button
                     onClick={handleDelete}
-                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg
-                      bg-error/20 hover:bg-error/30 text-white text-sm
+                    className="inline-flex items-center gap-1 sm:gap-1.5 px-2 sm:px-3 py-1 sm:py-1.5 rounded-md sm:rounded-lg
+                      bg-error/20 hover:bg-error/30 text-white text-xs sm:text-sm
                       transition-colors duration-200"
                   >
-                    <Trash2 className="w-4 h-4" />
-                    Delete
+                    <Trash2 className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+                    <span className="hidden sm:inline">Delete</span>
                   </button>
 
                   <button
                     onClick={clearSelection}
-                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg
-                      bg-white/10 hover:bg-white/20 text-white text-sm
+                    className="inline-flex items-center gap-1 sm:gap-1.5 px-2 sm:px-3 py-1 sm:py-1.5 rounded-md sm:rounded-lg
+                      bg-white/10 hover:bg-white/20 text-white text-xs sm:text-sm
                       transition-colors duration-200"
                   >
-                    <X className="w-4 h-4" />
-                    Clear
+                    <X className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+                    <span className="hidden sm:inline">Clear</span>
                   </button>
                 </>
               ) : (

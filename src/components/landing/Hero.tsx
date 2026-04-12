@@ -15,7 +15,7 @@ export function Hero() {
   return (
     <section
       id="hero"
-      className="relative flex flex-col items-center justify-center min-h-screen px-4 sm:px-6 lg:px-8 py-20 sm:py-24 md:py-28 lg:py-32"
+      className="relative flex flex-col items-center justify-start md:justify-center min-h-screen px-4 sm:px-6 lg:px-8 pt-24 pb-12 sm:py-24 md:py-28 lg:py-32"
     >
       {/* Gradient background accents */}
       <div className="absolute inset-0 pointer-events-none">
@@ -23,17 +23,17 @@ export function Hero() {
         <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-treez-cyan/5 rounded-full blur-3xl" />
       </div>
 
-      <div className="relative z-10 text-center max-w-5xl mx-auto space-y-4 sm:space-y-6 md:space-y-8">
-        {/* Badge - Hidden on mobile */}
+      <div className="relative z-10 text-center max-w-5xl mx-auto space-y-3 sm:space-y-6 md:space-y-8">
+        {/* Badge - Now visible on mobile too */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.4 }}
-          className="hidden md:flex justify-center"
+          className="flex justify-center"
         >
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 backdrop-blur-sm border border-white/10">
-            <div className="w-2 h-2 rounded-full bg-treez-cyan" />
-            <span className="text-sm font-medium text-gray-300">
+          <div className="inline-flex items-center gap-2 px-3 py-1.5 sm:px-4 sm:py-2 rounded-full bg-white/5 backdrop-blur-sm border border-white/10">
+            <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-treez-cyan" />
+            <span className="text-xs sm:text-sm font-medium text-gray-300">
               {landingCopy.hero.badge}
             </span>
           </div>
