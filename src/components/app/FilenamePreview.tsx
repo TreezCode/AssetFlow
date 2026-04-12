@@ -22,7 +22,7 @@ export function FilenamePreview({
   if (!isComplete) {
     return (
       <div className="flex items-center gap-2 text-xs text-yellow-400">
-        <AlertCircle className="w-3 h-3 flex-shrink-0" />
+        <AlertCircle className="w-3 h-3 shrink-0" />
         <span>
           {!sku && !finalDescriptor && 'Missing SKU and descriptor'}
           {!sku && finalDescriptor && 'Missing SKU'}
@@ -34,8 +34,8 @@ export function FilenamePreview({
 
   return (
     <div className="flex items-center gap-2">
-      <Check className="w-3 h-3 flex-shrink-0 text-success" />
-      <code className="text-xs text-[#00d4ff] bg-[#00d4ff]/10 px-2 py-1 rounded font-mono">
+      <Check className="w-3 h-3 shrink-0 text-success" />
+      <code className="text-xs text-treez-cyan bg-treez-cyan/10 px-2 py-1 rounded font-mono">
         {filename}
       </code>
     </div>

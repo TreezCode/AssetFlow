@@ -20,13 +20,21 @@ const spaceGrotesk = Space_Grotesk({
 })
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://assetflow.vercel.app'),
+  metadataBase: new URL('https://assetflow.app'),
   title: {
     default: "AssetFlow — Product Image Renaming Tool | Build With Treez",
     template: "%s | AssetFlow",
   },
   description:
-    "Stop wasting hours renaming product images. Convert unstructured files into clean, store-ready assets in seconds. No signup required. Perfect for Shopify, Etsy, and e-commerce sellers.",
+    "Transform messy product image filenames into organized, SEO-friendly names in seconds. Batch rename photos for your Shopify or Etsy store with zero learning curve.",
+  icons: {
+    icon: [
+      { url: '/brand/logo-icon.webp', sizes: 'any' },
+      { url: '/brand/logo-icon.webp', sizes: '32x32', type: 'image/webp' },
+      { url: '/brand/logo-icon.webp', sizes: '16x16', type: 'image/webp' },
+    ],
+    apple: '/brand/logo-icon.webp',
+  },
   keywords: [
     "image renaming",
     "product images",

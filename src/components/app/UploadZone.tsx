@@ -47,8 +47,8 @@ export function UploadZone() {
         relative border-2 border-dashed rounded-xl transition-all duration-300 cursor-pointer
         ${hasImages ? 'p-4' : 'p-12'}
         ${isDragOver
-          ? 'border-[#00d4ff] bg-[#00d4ff]/5'
-          : 'border-white/20 hover:border-[#915eff]/50 bg-white/5'
+          ? 'border-treez-cyan bg-treez-cyan/5'
+          : 'border-white/20 hover:border-treez-purple/50 bg-white/5'
         }
       `}
     >
@@ -63,7 +63,7 @@ export function UploadZone() {
 
       {hasImages ? (
         <div className="flex items-center justify-center gap-4">
-          <Upload className="w-5 h-5 text-[#00d4ff]" />
+          <Upload className="w-5 h-5 text-treez-cyan" />
           <div className="text-left">
             <p className="text-white font-medium">
               {images.length} / {MAX_FREE_IMAGES} images
@@ -75,8 +75,8 @@ export function UploadZone() {
         </div>
       ) : (
         <div className="flex flex-col items-center justify-center text-center">
-          <div className="w-16 h-16 mb-4 rounded-full bg-gradient-to-br from-[#915eff]/20 to-[#00d4ff]/20 flex items-center justify-center">
-            <Upload className="w-8 h-8 text-[#00d4ff]" />
+          <div className="w-16 h-16 mb-4 rounded-full bg-linear-to-br from-treez-purple/20 to-treez-cyan/20 flex items-center justify-center">
+            <Upload className="w-8 h-8 text-treez-cyan" />
           </div>
           <h3 className="text-xl font-semibold text-white mb-2">
             Drag & drop images here

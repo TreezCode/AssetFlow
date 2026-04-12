@@ -42,7 +42,7 @@ export function DescriptorSelect({
           border border-white/10 
           rounded-lg text-white text-sm
           placeholder:text-gray-400
-          focus:outline-none focus:ring-2 focus:ring-[#915eff] 
+          focus:outline-none focus:ring-2 focus:ring-treez-purple 
           transition-all duration-300"
       >
         <option value="" disabled>
@@ -58,7 +58,7 @@ export function DescriptorSelect({
               key={desc.value}
               value={desc.value}
               disabled={isUsed}
-              className="bg-[#0a0a0a] text-white disabled:text-gray-600"
+              className="bg-deep-space text-white disabled:text-gray-600"
             >
               {desc.label} {isUsed ? '(used)' : ''}
             </option>
@@ -78,15 +78,15 @@ export function DescriptorSelect({
               border border-white/10 
               rounded-lg text-white text-sm
               placeholder:text-gray-400
-              focus:outline-none focus:ring-2 focus:ring-[#915eff] 
+              focus:outline-none focus:ring-2 focus:ring-treez-purple 
               transition-all duration-300"
           />
           {currentCustom && currentCustom !== sanitizeString(currentCustom) && (
             <div className="flex items-center gap-2 mt-1 text-xs text-yellow-400">
-              <AlertCircle className="w-3 h-3 flex-shrink-0" />
+              <AlertCircle className="w-3 h-3 shrink-0" />
               <span>
                 Special characters will be removed. Preview:{' '}
-                <code className="text-[#00d4ff] bg-[#00d4ff]/10 px-1 py-0.5 rounded">
+                <code className="text-treez-cyan bg-treez-cyan/10 px-1 py-0.5 rounded">
                   {sanitizeString(currentCustom)}
                 </code>
               </span>

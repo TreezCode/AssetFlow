@@ -47,7 +47,7 @@ export function ImageGridTile({ image, groupId, sku }: ImageGridTileProps) {
     >
       <div className="relative aspect-square rounded-lg overflow-hidden 
         bg-white/5 backdrop-blur-sm border border-white/10 
-        hover:border-[#915eff]/50 hover:shadow-lg hover:shadow-[#915eff]/20
+        hover:border-treez-purple/50 hover:shadow-lg hover:shadow-treez-purple/20
         transition-all duration-300">
         <img
           src={image.thumbnail}
@@ -55,7 +55,7 @@ export function ImageGridTile({ image, groupId, sku }: ImageGridTileProps) {
           className="w-full h-full object-cover"
         />
         
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent 
+        <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent 
           opacity-0 group-hover:opacity-100 transition-opacity duration-300">
           <div className="absolute bottom-0 left-0 right-0 p-2">
             <p className="text-xs text-white truncate font-medium">
@@ -76,7 +76,7 @@ export function ImageGridTile({ image, groupId, sku }: ImageGridTileProps) {
 
         {image.descriptor && (
           <div className="absolute top-1 left-1 px-2 py-1 
-            bg-[#915eff]/90 backdrop-blur-sm rounded-md">
+            bg-treez-purple/90 backdrop-blur-sm rounded-md">
             <p className="text-xs font-medium text-white">
               {image.descriptor === 'custom' 
                 ? image.customDescriptor 
@@ -94,11 +94,11 @@ export function ImageGridTile({ image, groupId, sku }: ImageGridTileProps) {
             bg-white/5 backdrop-blur-sm 
             border border-white/10 
             rounded-lg text-white
-            focus:outline-none focus:ring-2 focus:ring-[#915eff] 
+            focus:outline-none focus:ring-2 focus:ring-treez-purple 
             transition-all duration-300
-            hover:border-[#915eff]/30"
+            hover:border-treez-purple/30"
         >
-          <option value="" className="bg-[#0a0a0a]">
+          <option value="" className="bg-deep-space">
             Select...
           </option>
           {DEFAULT_DESCRIPTORS.map((desc) => {
@@ -111,7 +111,7 @@ export function ImageGridTile({ image, groupId, sku }: ImageGridTileProps) {
                 key={desc.value}
                 value={desc.value}
                 disabled={isUsed}
-                className="bg-[#0a0a0a] text-white disabled:text-gray-600"
+                className="bg-deep-space text-white disabled:text-gray-600"
               >
                 {desc.label} {isUsed ? '(used)' : ''}
               </option>
@@ -131,14 +131,14 @@ export function ImageGridTile({ image, groupId, sku }: ImageGridTileProps) {
                 border border-white/10 
                 rounded-lg text-white 
                 placeholder:text-gray-400
-                focus:outline-none focus:ring-2 focus:ring-[#915eff] 
+                focus:outline-none focus:ring-2 focus:ring-treez-purple 
                 transition-all duration-300"
             />
             {image.customDescriptor && image.customDescriptor !== sanitizeString(image.customDescriptor) && (
               <div className="flex items-start gap-1 text-xs text-yellow-400">
-                <AlertCircle className="w-3 h-3 flex-shrink-0 mt-0.5" />
+                <AlertCircle className="w-3 h-3 shrink-0 mt-0.5" />
                 <span className="leading-tight">
-                  Sanitized: <code className="text-[#00d4ff]">{sanitizeString(image.customDescriptor)}</code>
+                  Sanitized: <code className="text-treez-cyan">{sanitizeString(image.customDescriptor)}</code>
                 </span>
               </div>
             )}

@@ -3,7 +3,7 @@
 import { useEffect } from 'react'
 import { X, CheckCircle, AlertCircle, Info, AlertTriangle } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
-import type { Toast, ToastType } from '@/types'
+import type { Toast } from '@/types'
 
 interface ToastProps {
   toast: Toast
@@ -59,11 +59,11 @@ export function ToastItem({ toast, onClose }: ToastProps) {
       transition={{ duration: 0.2 }}
       className={`flex items-start gap-3 p-4 rounded-lg border backdrop-blur-sm ${style.bg} ${style.border} shadow-lg max-w-md`}
     >
-      <Icon className={`w-5 h-5 flex-shrink-0 mt-0.5 ${style.text}`} />
+      <Icon className={`w-5 h-5 shrink-0 mt-0.5 ${style.text}`} />
       <p className={`flex-1 text-sm font-medium ${style.text}`}>{toast.message}</p>
       <button
         onClick={() => onClose(toast.id)}
-        className={`flex-shrink-0 p-1 rounded hover:bg-white/10 transition-colors ${style.text}`}
+        className={`shrink-0 p-1 rounded hover:bg-white/10 transition-colors ${style.text}`}
         aria-label="Close notification"
       >
         <X className="w-4 h-4" />
@@ -79,7 +79,7 @@ interface ToastContainerProps {
 
 export function ToastContainer({ toasts, onClose }: ToastContainerProps) {
   return (
-    <div className="fixed top-20 right-4 z-[90] flex flex-col gap-2">
+    <div className="fixed top-20 right-4 z-90 flex flex-col gap-2">
       <AnimatePresence mode="popLayout">
         {toasts.map((toast) => (
           <ToastItem key={toast.id} toast={toast} onClose={onClose} />

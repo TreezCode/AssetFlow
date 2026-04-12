@@ -70,7 +70,7 @@ export function ProductGroup({ group }: ProductGroupProps) {
       <div 
         className={`px-4 sm:px-6 py-4 flex items-center justify-between border-b transition-all duration-300 ${
           isDragOver 
-            ? 'border-[#915eff] bg-[#915eff]/10 border-2' 
+            ? 'border-treez-purple bg-treez-purple/10 border-2' 
             : 'border-white/10'
         }`}
         onDragOver={handleDragOver}
@@ -92,8 +92,8 @@ export function ProductGroup({ group }: ProductGroupProps) {
             {images.length > 0 && (
               <div className="flex items-center gap-2">
                 <span className="px-2 py-0.5 rounded-full 
-                  bg-[#00d4ff]/20 border border-[#00d4ff]/30 
-                  text-[#00d4ff] text-xs font-medium">
+                  bg-treez-cyan/20 border border-treez-cyan/30 
+                  text-treez-cyan text-xs font-medium">
                   {images.length} {images.length === 1 ? 'image' : 'images'}
                 </span>
                 {completedImages === images.length && images.length > 0 && (
@@ -111,7 +111,7 @@ export function ProductGroup({ group }: ProductGroupProps) {
           variant="ghost"
           size="sm"
           onClick={handleDelete}
-          className="text-error hover:text-error hover:bg-error/10 flex-shrink-0"
+          className="text-error hover:text-error hover:bg-error/10 shrink-0"
         >
           <Trash2 className="w-4 h-4" />
         </Button>
@@ -128,7 +128,7 @@ export function ProductGroup({ group }: ProductGroupProps) {
           >
             <div 
               className={`p-4 sm:p-6 transition-all duration-300 ${
-                isDragOver ? 'bg-[#915eff]/5' : ''
+                isDragOver ? 'bg-treez-purple/5' : ''
               }`}
               onDragOver={handleDragOver}
               onDragLeave={handleDragLeave}
@@ -149,15 +149,15 @@ export function ProductGroup({ group }: ProductGroupProps) {
                     border border-white/10 
                     rounded-lg text-white 
                     placeholder:text-gray-400
-                    focus:outline-none focus:ring-2 focus:ring-[#915eff] 
+                    focus:outline-none focus:ring-2 focus:ring-treez-purple 
                     transition-all duration-300"
                 />
                 {group.sku && group.sku !== sanitizeString(group.sku) && (
                   <div className="flex items-center gap-2 mt-2 text-xs text-yellow-400">
-                    <AlertCircle className="w-3 h-3 flex-shrink-0" />
+                    <AlertCircle className="w-3 h-3 shrink-0" />
                     <span>
                       Special characters will be removed. Preview:{' '}
-                      <code className="text-[#00d4ff] bg-[#00d4ff]/10 px-1 py-0.5 rounded">
+                      <code className="text-treez-cyan bg-treez-cyan/10 px-1 py-0.5 rounded">
                         {sanitizeString(group.sku)}
                       </code>
                     </span>
@@ -173,11 +173,11 @@ export function ProductGroup({ group }: ProductGroupProps) {
               {images.length === 0 ? (
                 <div className={`text-center py-8 text-gray-500 border-2 border-dashed rounded-lg transition-all duration-300 ${
                   isDragOver 
-                    ? 'border-[#915eff] bg-[#915eff]/10 scale-[1.02]' 
+                    ? 'border-treez-purple bg-treez-purple/10 scale-[1.02]' 
                     : 'border-white/10'
                 }`}>
                   <p className={`mb-2 transition-colors duration-300 ${
-                    isDragOver ? 'text-[#915eff]' : ''
+                    isDragOver ? 'text-treez-purple' : ''
                   }`}>
                     {isDragOver ? '📥 Drop image here' : 'No images in this group yet'}
                   </p>

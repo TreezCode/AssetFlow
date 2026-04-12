@@ -57,7 +57,7 @@ export function UngroupedGallery({ ungroupedImages, groups }: UngroupedGalleryPr
           animate={{ rotate: isExpanded ? 180 : 0 }}
           transition={{ duration: 0.3 }}
         >
-          <ChevronDown className="w-5 h-5 text-gray-400 group-hover:text-[#915eff]" />
+          <ChevronDown className="w-5 h-5 text-gray-400 group-hover:text-treez-purple" />
         </motion.div>
       </button>
 
@@ -86,9 +86,9 @@ export function UngroupedGallery({ ungroupedImages, groups }: UngroupedGalleryPr
                           key={group.id}
                           onClick={() => handleGroupSelect(group.id)}
                           className="px-4 py-2 rounded-lg 
-                            bg-gradient-to-r from-[#915eff] to-[#ff6b9d]
+                            bg-linear-to-r from-treez-purple to-treez-pink
                             text-white font-medium text-sm
-                            hover:scale-105 hover:shadow-lg hover:shadow-[#915eff]/30
+                            hover:scale-105 hover:shadow-lg hover:shadow-treez-purple/30
                             transition-all duration-300"
                         >
                           → {group.name}
@@ -125,7 +125,7 @@ export function UngroupedGallery({ ungroupedImages, groups }: UngroupedGalleryPr
                           hidden: { opacity: 0, y: 20 },
                           show: { opacity: 1, y: 0 }
                         }}
-                        className={selectedImageId === image.id ? 'ring-2 ring-[#915eff] rounded-lg' : ''}
+                        className={selectedImageId === image.id ? 'ring-2 ring-treez-purple rounded-lg' : ''}
                       >
                         <CompactImageTile
                           image={image}

@@ -40,7 +40,7 @@ export function AppToolbar() {
           {groupCount > 0 && (
             <div>
               <span className="text-gray-400 text-sm mr-2">Groups:</span>
-              <span className="font-semibold text-[#00d4ff]">{groupCount}</span>
+              <span className="font-semibold text-treez-cyan">{groupCount}</span>
             </div>
           )}
         </div>

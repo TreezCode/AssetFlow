@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
@@ -33,9 +34,14 @@ export function Header() {
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           <Link href="/" className="flex items-center gap-2">
-            <span className="text-xl font-bold bg-linear-to-r from-treez-purple to-treez-cyan bg-clip-text text-transparent">
-              AssetFlow
-            </span>
+            <Image
+              src="/brand/logo-full.webp"
+              alt="AssetFlow"
+              width={160}
+              height={40}
+              priority
+              className="h-10 w-auto"
+            />
           </Link>
 
           <ul className="hidden md:flex items-center gap-8">
@@ -44,7 +50,7 @@ export function Header() {
                 <a
                   href={isLanding ? link.href : `/${link.href}`}
                   onClick={(e) => handleNavClick(e, link.href)}
-                  className="text-sm font-medium text-gray-400 hover:text-treez-cyan transition-colors duration-300"
+                  className="text-sm font-medium text-gray-400 hover:text-treez-cyan transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-treez-cyan focus-visible:ring-offset-2 focus-visible:ring-offset-deep-space rounded-lg px-2 py-1"
                 >
                   {link.name}
                 </a>
@@ -53,7 +59,7 @@ export function Header() {
             <li>
               <Link
                 href="/app"
-                className="text-sm font-medium text-gray-400 hover:text-treez-cyan transition-colors duration-300"
+                className="text-sm font-medium text-gray-400 hover:text-treez-cyan transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-treez-cyan focus-visible:ring-offset-2 focus-visible:ring-offset-deep-space rounded-lg px-2 py-1"
               >
                 App
               </Link>
@@ -69,7 +75,7 @@ export function Header() {
           </div>
 
           <button
-            className="md:hidden p-2 rounded-lg border border-white/10 hover:border-treez-purple transition-colors duration-300"
+            className="md:hidden p-2 rounded-lg border border-white/10 hover:border-treez-purple transition-colors duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-treez-purple focus-visible:ring-offset-2 focus-visible:ring-offset-deep-space"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
           >
@@ -97,7 +103,7 @@ export function Header() {
                   key={link.name}
                   href={isLanding ? link.href : `/${link.href}`}
                   onClick={(e) => handleNavClick(e, link.href)}
-                  className="block text-sm font-medium text-gray-400 hover:text-[#00d4ff] transition-colors duration-300 py-2"
+                  className="block text-sm font-medium text-gray-400 hover:text-treez-cyan transition-colors duration-300 py-2"
                 >
                   {link.name}
                 </a>
@@ -105,7 +111,7 @@ export function Header() {
               <Link
                 href="/app"
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="block text-sm font-medium text-gray-400 hover:text-[#00d4ff] transition-colors duration-300 py-2"
+                className="block text-sm font-medium text-gray-400 hover:text-treez-cyan transition-colors duration-300 py-2"
               >
                 App
               </Link>

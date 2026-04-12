@@ -32,7 +32,7 @@ export function Pricing() {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 font-[family-name:var(--font-space-grotesk)]">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 font-display">
             {heading}
           </h2>
           <p className="text-base sm:text-lg md:text-xl text-gray-400 max-w-2xl mx-auto">
@@ -63,13 +63,13 @@ export function Pricing() {
               }}
               className={`relative bg-white/5 backdrop-blur-xl border rounded-xl p-8 transition-all duration-300 ${
                 tier.highlighted
-                  ? 'border-[#915eff] shadow-xl shadow-[#915eff]/20 md:scale-105'
+                  ? 'border-treez-purple shadow-xl shadow-treez-purple/20 md:scale-105'
                   : 'border-white/10 hover:border-white/20'
               }`}
             >
               {/* Badge */}
               {'badge' in tier && tier.badge && (
-                <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-gradient-to-r from-[#915eff] to-[#ff6b9d] text-white text-sm font-semibold">
+                <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-linear-to-r from-treez-purple to-treez-pink text-white text-sm font-semibold">
                   {tier.badge}
                 </div>
               )}
@@ -90,7 +90,7 @@ export function Pricing() {
               <ul className="space-y-4 mb-8">
                 {tier.features.map((feature) => (
                   <li key={feature} className="flex items-start gap-3">
-                    <Check className="w-5 h-5 text-success flex-shrink-0 mt-0.5" />
+                    <Check className="w-5 h-5 text-success shrink-0 mt-0.5" />
                     <span className="text-gray-300 text-sm">{feature}</span>
                   </li>
                 ))}

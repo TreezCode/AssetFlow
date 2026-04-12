@@ -16,7 +16,7 @@ export function Problem() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.8 }}
-          className="text-3xl sm:text-4xl md:text-5xl font-bold text-white text-center mb-12 font-[family-name:var(--font-space-grotesk)]"
+          className="text-3xl sm:text-4xl md:text-5xl font-bold text-white text-center mb-12 font-display"
         >
           {heading}
         </motion.h2>
@@ -35,7 +35,7 @@ export function Problem() {
                 key={i}
                 className="flex items-center gap-3 text-gray-400 py-2"
               >
-                <X className="w-4 h-4 text-error flex-shrink-0" />
+                <X className="w-4 h-4 text-error shrink-0" />
                 <span>{file}</span>
               </div>
             ))}
@@ -65,7 +65,7 @@ export function Problem() {
               }}
               className="flex items-start gap-3 bg-white/5 backdrop-blur-sm border border-white/10 rounded-lg p-4"
             >
-              <X className="w-5 h-5 text-error flex-shrink-0 mt-0.5" />
+              <X className="w-5 h-5 text-error shrink-0 mt-0.5" />
               <span className="text-gray-300">{pain}</span>
             </motion.div>
           ))}

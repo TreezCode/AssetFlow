@@ -1,6 +1,7 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 
 const quickLinks = [
@@ -27,10 +28,14 @@ export function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           <div>
-            <span className="text-lg font-bold bg-linear-to-r from-treez-purple to-treez-cyan bg-clip-text text-transparent">
-              AssetFlow
-            </span>
-            <p className="mt-2 text-sm text-gray-400">
+            <Image
+              src="/brand/logo-full.webp"
+              alt="AssetFlow"
+              width={160}
+              height={40}
+              className="h-10 w-auto mb-3"
+            />
+            <p className="text-sm text-gray-400">
               Product Image Renaming Tool
             </p>
             <p className="mt-4 text-xs text-gray-500">

@@ -46,8 +46,8 @@ export function BeforeAfter() {
       </motion.div>
 
       <div className="flex items-center justify-center">
-        <ArrowRight className="w-8 h-8 text-[#00d4ff] hidden md:block" />
-        <ArrowRight className="w-6 h-6 text-[#00d4ff] md:hidden rotate-90" />
+        <ArrowRight className="w-8 h-8 text-treez-cyan hidden md:block" />
+        <ArrowRight className="w-6 h-6 text-treez-cyan md:hidden rotate-90" />
       </div>
 
       <motion.div

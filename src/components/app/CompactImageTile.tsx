@@ -51,7 +51,7 @@ export function CompactImageTile({ image, onClick }: CompactImageTileProps) {
         onDragEnd={handleDragEnd}
         className="relative aspect-square rounded-lg overflow-hidden 
           bg-white/5 backdrop-blur-sm border border-white/10 
-          hover:border-[#915eff]/50 hover:shadow-lg hover:shadow-[#915eff]/20
+          hover:border-treez-purple/50 hover:shadow-lg hover:shadow-treez-purple/20
           hover:scale-105 transition-all duration-300 cursor-move"
       >
       <img
@@ -60,7 +60,7 @@ export function CompactImageTile({ image, onClick }: CompactImageTileProps) {
         className="w-full h-full object-cover"
       />
       
-      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent 
+      <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent 
         opacity-0 group-hover:opacity-100 transition-opacity duration-300">
         <div className="absolute bottom-0 left-0 right-0 p-2">
           <p className="text-xs text-white truncate font-medium">

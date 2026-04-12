@@ -38,11 +38,11 @@ export function OnboardingModal() {
             animate={{ scale: 1, opacity: 1, y: 0 }}
             exit={{ scale: 0.9, opacity: 0, y: 20 }}
             transition={{ type: 'spring', damping: 20 }}
-            className="relative bg-[#1a1a2e]/95 backdrop-blur-xl 
+            className="relative bg-cosmic-gray/95 backdrop-blur-xl 
               border border-white/10 
               rounded-2xl p-6 sm:p-8 
               max-w-2xl w-full mx-4 
-              shadow-2xl shadow-[#915eff]/20"
+              shadow-2xl shadow-treez-purple/20"
           >
             <button
               onClick={handleClose}
@@ -57,9 +57,9 @@ export function OnboardingModal() {
 
             <div className="text-center mb-6">
               <div className="inline-flex items-center justify-center w-16 h-16 rounded-full 
-                bg-gradient-to-br from-[#915eff]/20 to-[#00d4ff]/20 
-                border border-[#915eff]/30 mb-4">
-                <Upload className="w-8 h-8 text-[#915eff]" />
+                bg-linear-to-br from-treez-purple/20 to-treez-cyan/20 
+                border border-treez-purple/30 mb-4">
+                <Upload className="w-8 h-8 text-treez-purple" />
               </div>
               <h2 className="text-2xl sm:text-3xl font-bold text-white mb-2">
                 Welcome to AssetFlow!
@@ -71,14 +71,14 @@ export function OnboardingModal() {
 
             <div className="space-y-4 mb-8">
               <div className="flex gap-4 p-4 rounded-lg bg-white/5 border border-white/10">
-                <div className="flex-shrink-0 w-10 h-10 rounded-full 
-                  bg-gradient-to-r from-[#915eff] to-[#ff6b9d] 
+                <div className="shrink-0 w-10 h-10 rounded-full 
+                  bg-linear-to-r from-treez-purple to-treez-pink 
                   flex items-center justify-center text-white font-bold">
                   1
                 </div>
                 <div>
                   <div className="flex items-center gap-2 mb-1">
-                    <FolderPlus className="w-4 h-4 text-[#915eff]" />
+                    <FolderPlus className="w-4 h-4 text-treez-purple" />
                     <h3 className="font-semibold text-white">Create Product Groups</h3>
                   </div>
                   <p className="text-sm text-gray-400">
@@ -88,14 +88,14 @@ export function OnboardingModal() {
               </div>
 
               <div className="flex gap-4 p-4 rounded-lg bg-white/5 border border-white/10">
-                <div className="flex-shrink-0 w-10 h-10 rounded-full 
-                  bg-gradient-to-r from-[#915eff] to-[#ff6b9d] 
+                <div className="shrink-0 w-10 h-10 rounded-full 
+                  bg-linear-to-r from-treez-purple to-treez-pink 
                   flex items-center justify-center text-white font-bold">
                   2
                 </div>
                 <div>
                   <div className="flex items-center gap-2 mb-1">
-                    <Hash className="w-4 h-4 text-[#00d4ff]" />
+                    <Hash className="w-4 h-4 text-treez-cyan" />
                     <h3 className="font-semibold text-white">Add Product SKU</h3>
                   </div>
                   <p className="text-sm text-gray-400">
@@ -105,14 +105,14 @@ export function OnboardingModal() {
               </div>
 
               <div className="flex gap-4 p-4 rounded-lg bg-white/5 border border-white/10">
-                <div className="flex-shrink-0 w-10 h-10 rounded-full 
-                  bg-gradient-to-r from-[#915eff] to-[#ff6b9d] 
+                <div className="shrink-0 w-10 h-10 rounded-full 
+                  bg-linear-to-r from-treez-purple to-treez-pink 
                   flex items-center justify-center text-white font-bold">
                   3
                 </div>
                 <div>
                   <div className="flex items-center gap-2 mb-1">
-                    <Tag className="w-4 h-4 text-[#ff6b9d]" />
+                    <Tag className="w-4 h-4 text-treez-pink" />
                     <h3 className="font-semibold text-white">Assign & Label Images</h3>
                   </div>
                   <p className="text-sm text-gray-400">
@@ -122,8 +122,8 @@ export function OnboardingModal() {
               </div>
 
               <div className="flex gap-4 p-4 rounded-lg bg-white/5 border border-white/10">
-                <div className="flex-shrink-0 w-10 h-10 rounded-full 
-                  bg-gradient-to-r from-[#915eff] to-[#ff6b9d] 
+                <div className="shrink-0 w-10 h-10 rounded-full 
+                  bg-linear-to-r from-treez-purple to-treez-pink 
                   flex items-center justify-center text-white font-bold">
                   4
                 </div>

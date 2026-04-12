@@ -9,7 +9,7 @@ export const landingCopy = {
       'Built for Shopify, Etsy, and small business workflows',
       'No setup. No learning curve. Just upload and go',
     ],
-    primaryCta: 'Try It Free — No Signup',
+    primaryCta: 'Try It Free',
     secondaryCta: 'See How It Works',
     reinforcement: 'Free for up to 20 images. Upgrade only when you need more.',
   },

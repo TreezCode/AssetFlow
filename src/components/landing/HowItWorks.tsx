@@ -24,7 +24,7 @@ export function HowItWorks() {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 font-[family-name:var(--font-space-grotesk)]">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 font-display">
             {heading}
           </h2>
           <p className="text-base sm:text-lg md:text-xl text-gray-400 max-w-2xl mx-auto">
@@ -47,7 +47,7 @@ export function HowItWorks() {
           className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-6 relative"
         >
           {/* Connecting line (desktop only) */}
-          <div className="hidden md:block absolute top-24 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+          <div className="hidden md:block absolute top-24 left-0 right-0 h-px bg-linear-to-r from-transparent via-white/10 to-transparent" />
 
           {steps.map((step) => {
             const Icon = icons[step.title as keyof typeof icons]
@@ -61,13 +61,13 @@ export function HowItWorks() {
                 className="relative flex flex-col items-center text-center"
               >
                 {/* Step Number */}
-                <div className="text-6xl sm:text-7xl font-bold bg-gradient-to-r from-[#915eff] to-[#00d4ff] bg-clip-text text-transparent mb-6 font-[family-name:var(--font-space-grotesk)]">
+                <div className="text-6xl sm:text-7xl font-bold bg-linear-to-r from-treez-purple to-treez-cyan bg-clip-text text-transparent mb-6 font-display">
                   {step.number}
                 </div>
 
                 {/* Icon Card */}
-                <div className="relative bg-white/5 backdrop-blur-xl border border-white/10 rounded-xl p-6 mb-6 hover:bg-white/10 hover:border-[#915eff]/30 hover:shadow-lg hover:shadow-[#915eff]/20 transition-all duration-300 group">
-                  <Icon className="w-12 h-12 text-[#00d4ff] group-hover:text-[#915eff] transition-colors duration-300" />
+                <div className="relative bg-white/5 backdrop-blur-xl border border-white/10 rounded-xl p-6 mb-6 hover:bg-white/10 hover:border-treez-purple/30 hover:shadow-lg hover:shadow-treez-purple/20 transition-all duration-300 group">
+                  <Icon className="w-12 h-12 text-treez-cyan group-hover:text-treez-purple transition-colors duration-300" />
                 </div>
 
                 {/* Title & Description */}

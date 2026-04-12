@@ -17,7 +17,7 @@ export function Features() {
   const { heading, subheading, items } = landingCopy.features
 
   return (
-    <section id="features" className="py-16 sm:py-20 md:py-28 lg:py-32 bg-[#0a0a0a]/50">
+    <section id="features" className="py-16 sm:py-20 md:py-28 lg:py-32 bg-deep-space/50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
@@ -27,7 +27,7 @@ export function Features() {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 font-[family-name:var(--font-space-grotesk)]">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4 font-display">
             {heading}
           </h2>
           <p className="text-base sm:text-lg md:text-xl text-gray-400 max-w-2xl mx-auto">
@@ -58,16 +58,16 @@ export function Features() {
                   hidden: { opacity: 0, scale: 0.9 },
                   show: { opacity: 1, scale: 1 },
                 }}
-                className="group bg-white/5 backdrop-blur-xl border border-white/10 rounded-xl p-6 hover:bg-white/10 hover:border-[#915eff]/30 hover:shadow-lg hover:shadow-[#915eff]/20 hover:scale-105 transition-all duration-300"
+                className="group bg-white/5 backdrop-blur-xl border border-white/10 rounded-xl p-6 hover:bg-white/10 hover:border-treez-purple/30 hover:shadow-lg hover:shadow-treez-purple/20 hover:scale-105 transition-all duration-300"
               >
                 <div className="flex items-start gap-4">
-                  <div className="flex-shrink-0">
-                    <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-[#915eff]/20 to-[#00d4ff]/20 flex items-center justify-center group-hover:from-[#915eff]/30 group-hover:to-[#00d4ff]/30 transition-all duration-300">
-                      <Icon className="w-6 h-6 text-[#00d4ff] group-hover:text-[#915eff] transition-colors duration-300" />
+                  <div className="shrink-0">
+                    <div className="w-12 h-12 rounded-lg bg-linear-to-br from-treez-purple/20 to-treez-cyan/20 flex items-center justify-center group-hover:from-treez-purple/30 group-hover:to-treez-cyan/30 transition-all duration-300">
+                      <Icon className="w-6 h-6 text-treez-cyan group-hover:text-treez-purple transition-colors duration-300" />
                     </div>
                   </div>
                   <div className="flex-1">
-                    <h3 className="text-lg font-semibold text-white mb-2 group-hover:text-[#00d4ff] transition-colors duration-300">
+                    <h3 className="text-lg font-semibold text-white mb-2 group-hover:text-treez-cyan transition-colors duration-300">
                       {feature.title}
                     </h3>
                     <p className="text-sm text-gray-400">{feature.description}</p>

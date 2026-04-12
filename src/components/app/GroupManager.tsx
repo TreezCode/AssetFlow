@@ -35,7 +35,7 @@ export function GroupManager() {
           border border-white/10 
           rounded-lg text-white 
           placeholder:text-gray-400
-          focus:outline-none focus:ring-2 focus:ring-[#915eff] 
+          focus:outline-none focus:ring-2 focus:ring-treez-purple 
           transition-all duration-300"
       />
       <Button

@@ -19,7 +19,7 @@ export function ImageCard({ image, sku }: ImageCardProps) {
   }
 
   return (
-    <div className="relative bg-white/5 backdrop-blur-xl border border-white/10 rounded-xl p-4 hover:bg-white/10 hover:border-[#915eff]/30 transition-all duration-300 group">
+    <div className="relative bg-white/5 backdrop-blur-xl border border-white/10 rounded-xl p-4 hover:bg-white/10 hover:border-treez-purple/30 transition-all duration-300 group">
       <button
         onClick={handleRemove}
         className="absolute top-2 right-2 w-6 h-6 rounded-full bg-error/20 hover:bg-error/40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200"
@@ -29,7 +29,7 @@ export function ImageCard({ image, sku }: ImageCardProps) {
       </button>
 
       <div className="flex gap-4">
-        <div className="flex-shrink-0 w-20 h-20 rounded-lg overflow-hidden bg-black/20">
+        <div className="shrink-0 w-20 h-20 rounded-lg overflow-hidden bg-black/20">
           <img
             src={image.thumbnail}
             alt={image.originalName}

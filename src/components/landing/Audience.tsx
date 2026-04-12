@@ -15,7 +15,7 @@ export function Audience() {
   const { heading, subheading, personas, reinforcement } = landingCopy.audience
 
   return (
-    <section className="py-16 sm:py-20 md:py-28 lg:py-32 bg-[#0a0a0a]/50">
+    <section className="py-16 sm:py-20 md:py-28 lg:py-32 bg-deep-space/50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div
@@ -25,7 +25,7 @@ export function Audience() {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6 font-[family-name:var(--font-space-grotesk)]">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6 font-display">
             {heading}
           </h2>
           <p className="text-base sm:text-lg md:text-xl text-gray-400 max-w-3xl mx-auto">
@@ -56,10 +56,10 @@ export function Audience() {
                   hidden: { opacity: 0, y: 20 },
                   show: { opacity: 1, y: 0 },
                 }}
-                className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-xl p-6 hover:bg-white/10 hover:border-[#915eff]/30 hover:shadow-lg hover:shadow-[#915eff]/20 transition-all duration-300 text-center"
+                className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-xl p-6 hover:bg-white/10 hover:border-treez-purple/30 hover:shadow-lg hover:shadow-treez-purple/20 transition-all duration-300 text-center"
               >
-                <div className="w-12 h-12 mx-auto mb-4 rounded-lg bg-gradient-to-br from-[#915eff]/20 to-[#00d4ff]/20 flex items-center justify-center">
-                  <Icon className="w-6 h-6 text-[#00d4ff]" />
+                <div className="w-12 h-12 mx-auto mb-4 rounded-lg bg-linear-to-br from-treez-purple/20 to-treez-cyan/20 flex items-center justify-center">
+                  <Icon className="w-6 h-6 text-treez-cyan" />
                 </div>
                 <h3 className="text-lg font-semibold text-white mb-2">
                   {persona.title}
