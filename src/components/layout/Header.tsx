@@ -2,7 +2,6 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
-import Image from 'next/image'
 import { usePathname, useRouter } from 'next/navigation'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
@@ -53,17 +52,22 @@ export function Header() {
     <header className="fixed top-0 left-0 right-0 z-50 bg-deep-space/95 backdrop-blur-xl border-b border-white/10 transition-all duration-300">
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          <Link href="/" className="flex items-center gap-2">
-            <div style={{ width: 'auto', height: '40px' }}>
-              <Image
-                src="/brand/logo-full.webp"
-                alt="AssetFlow"
-                width={160}
-                height={40}
-                priority
-                className="w-auto h-full object-contain"
-              />
-            </div>
+          <Link 
+            href="/" 
+            className="flex items-center gap-2 cursor-pointer"
+            onClick={(e) => {
+              if (isLanding) {
+                e.preventDefault()
+                window.scrollTo({ top: 0, behavior: 'smooth' })
+              }
+            }}
+          >
+            <img
+              src="/brand/logo-full.webp"
+              alt="AssetFlow"
+              height="48"
+              className="h-[48px] w-auto"
+            />
           </Link>
 
           <ul className="hidden md:flex items-center gap-8">
