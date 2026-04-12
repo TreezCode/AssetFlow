@@ -12,6 +12,11 @@ const FILE_SIGNATURES = {
     [0x47, 0x49, 0x46, 0x38, 0x39, 0x61],
   ],
   webp: [[0x52, 0x49, 0x46, 0x46]],
+  // RAW formats - use TIFF-based signatures (most RAW files are TIFF variants)
+  tiff: [
+    [0x49, 0x49, 0x2a, 0x00], // Little-endian TIFF (used by CR2, NEF, ARW, DNG, etc.)
+    [0x4d, 0x4d, 0x00, 0x2a], // Big-endian TIFF
+  ],
 } as const
 
 const MAX_FILE_SIZE = 50 * 1024 * 1024
@@ -93,12 +98,24 @@ export async function validateImageFile(
     }
   }
 
+  // Check if it's a RAW file by extension
+  const { isRawFile } = await import('./rawProcessor')
+  const isRaw = isRawFile(file.name)
+  
+  if (isRaw) {
+    // RAW files are valid - signature check is less reliable for RAW
+    return {
+      isValid: true,
+      fileType: 'raw',
+    }
+  }
+
   const detectedType = await validateFileSignature(file)
 
   if (!detectedType) {
     return {
       isValid: false,
-      error: `File "${file.name}" is not a valid image (JPEG, PNG, GIF, or WebP)`,
+      error: `File "${file.name}" is not a valid image (JPEG, PNG, GIF, WebP, or RAW)`,
     }
   }
 

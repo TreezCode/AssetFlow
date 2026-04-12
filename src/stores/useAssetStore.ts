@@ -2,7 +2,7 @@ import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
 import type { AssetStore, AssetImage, ResolvedFilename, ToastType } from '@/types'
 import { generateFilename, isFilenameComplete, getFileExtension } from '@/lib/filename'
-import { MAX_FREE_IMAGES, THUMBNAIL_MAX_SIZE } from '@/lib/constants'
+import { MAX_FREE_IMAGES, THUMBNAIL_MAX_SIZE, ITERATION_PRESETS } from '@/lib/constants'
 import { validateImageFile, getTotalFileSize } from '@/lib/file-validation'
 import { cleanupThumbnails } from '@/lib/memory-monitor'
 
@@ -105,15 +105,28 @@ export const useAssetStore = create<AssetStore>()(
     }
 
     try {
+      const { isRawFile, extractRawPreview } = await import('@/lib/rawProcessor')
+      
       const newImages: AssetImage[] = await Promise.all(
         validatedFiles.map(async (file) => {
-          const thumbnail = await generateThumbnail(file)
+          const isRaw = isRawFile(file.name)
+          let thumbnail: string
+          
+          if (isRaw) {
+            // Try to extract preview from RAW file
+            const rawPreview = await extractRawPreview(file)
+            thumbnail = rawPreview || await generateThumbnail(file)
+          } else {
+            thumbnail = await generateThumbnail(file)
+          }
+          
           return {
             id: crypto.randomUUID(),
             file,
             thumbnail,
             originalName: file.name,
             extension: getFileExtension(file.name),
+            isRaw,
             sku: null,
             descriptor: null,
             customDescriptor: null,
@@ -165,13 +178,43 @@ export const useAssetStore = create<AssetStore>()(
   },
 
   setImageDescriptor: (imageId: string, descriptor: string) => {
-    set((state) => ({
-      images: state.images.map((img) =>
-        img.id === imageId
-          ? { ...img, descriptor, customDescriptor: descriptor === 'custom' ? img.customDescriptor : null }
-          : img
-      ),
-    }))
+    const { images } = get()
+    const targetImage = images.find(img => img.id === imageId)
+    
+    // Check if this is an iteration preset
+    const iterationPreset = ITERATION_PRESETS.find(p => p.value === descriptor)
+    
+    if (iterationPreset && targetImage) {
+      // Auto-apply iteration to all images in same SKU (or no-SKU if no SKU assigned)
+      const targetSku = targetImage.sku
+      const skuImages = images.filter(img => img.sku === targetSku)
+      
+      set((state) => ({
+        images: state.images.map((img) => {
+          if (img.sku === targetSku) {
+            // Find index within SKU group
+            const index = skuImages.findIndex(si => si.id === img.id)
+            const iteratedValue = iterationPreset.format(index + 1)
+            
+            return {
+              ...img,
+              descriptor: 'custom', // Store as custom so it displays the formatted value
+              customDescriptor: iteratedValue
+            }
+          }
+          return img
+        }),
+      }))
+    } else {
+      // Regular descriptor assignment
+      set((state) => ({
+        images: state.images.map((img) =>
+          img.id === imageId
+            ? { ...img, descriptor, customDescriptor: descriptor === 'custom' ? img.customDescriptor : null }
+            : img
+        ),
+      }))
+    }
   },
 
   setCustomDescriptor: (imageId: string, text: string) => {

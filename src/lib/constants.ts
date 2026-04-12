@@ -9,7 +9,24 @@ export const ACCEPTED_FILE_TYPES = {
   'image/gif': ['.gif'],
 } as const
 
-export const ACCEPTED_EXTENSIONS = ['.jpg', '.jpeg', '.png', '.webp', '.gif']
+// RAW file formats (preview extraction only)
+export const RAW_FILE_EXTENSIONS = [
+  '.cr2',  // Canon
+  '.cr3',  // Canon (newer)
+  '.nef',  // Nikon
+  '.arw',  // Sony
+  '.dng',  // Adobe Digital Negative
+  '.raf',  // Fujifilm
+  '.orf',  // Olympus
+  '.rw2',  // Panasonic
+  '.pef',  // Pentax
+  '.srw',  // Samsung
+] as const
+
+export const ACCEPTED_EXTENSIONS = [
+  '.jpg', '.jpeg', '.png', '.webp', '.gif',
+  ...RAW_FILE_EXTENSIONS
+]
 
 export const FILENAME_REGEX = /[^a-z0-9-]/g
 
@@ -26,6 +43,15 @@ export const DEFAULT_DESCRIPTORS = [
   { value: 'thickness', label: 'Thickness' },
   { value: 'topdown', label: 'Top Down' },
   { value: 'custom', label: 'Custom' },
+] as const
+
+// Auto-iteration presets for sequential naming
+export const ITERATION_PRESETS = [
+  { value: 'num-2', label: 'Numbers (01, 02, 03)', format: (n: number) => n.toString().padStart(2, '0') },
+  { value: 'num-3', label: 'Numbers (001, 002, 003)', format: (n: number) => n.toString().padStart(3, '0') },
+  { value: 'num-4', label: 'Numbers (0001, 0002, 0003)', format: (n: number) => n.toString().padStart(4, '0') },
+  { value: 'alpha-upper', label: 'Letters (A, B, C)', format: (n: number) => String.fromCharCode(64 + n) },
+  { value: 'alpha-lower', label: 'Letters (a, b, c)', format: (n: number) => String.fromCharCode(96 + n) },
 ] as const
 
 export const THUMBNAIL_MAX_SIZE = 200

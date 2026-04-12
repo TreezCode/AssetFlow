@@ -4,6 +4,7 @@ export interface AssetImage {
   thumbnail: string
   originalName: string
   extension: string
+  isRaw: boolean
   sku: string | null
   descriptor: string | null
   customDescriptor: string | null

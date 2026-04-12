@@ -1,12 +1,12 @@
 'use client'
 
-import { X, AlertCircle, Check, GripVertical } from 'lucide-react'
+import { X, AlertCircle, Check, GripVertical, Camera } from 'lucide-react'
 import { motion } from 'framer-motion'
 import { useDraggable } from '@dnd-kit/core'
 import { CSS } from '@dnd-kit/utilities'
 import { AssetImage } from '@/types'
 import { useAssetStore } from '@/stores/useAssetStore'
-import { DEFAULT_DESCRIPTORS } from '@/lib/constants'
+import { DEFAULT_DESCRIPTORS, ITERATION_PRESETS } from '@/lib/constants'
 import { sanitizeString } from '@/lib/filename'
 import { FilenamePreview } from './FilenamePreview'
 
@@ -142,6 +142,16 @@ export function ImageGridTile({ image, sku }: ImageGridTileProps) {
           <X className="w-3.5 h-3.5 text-white" />
         </button>
 
+        {/* RAW Badge */}
+        {image.isRaw && (
+          <div className="absolute bottom-2 right-2 px-1.5 py-0.5 
+            bg-amber-500/90 backdrop-blur-sm rounded flex items-center gap-1">
+            <Camera className="w-3 h-3 text-white" />
+            <span className="text-[10px] font-bold text-white">RAW</span>
+          </div>
+        )}
+
+        {/* Descriptor Badge */}
         {image.descriptor && !isSelected && (
           <div className="absolute top-1 left-1 px-2 py-1 
             bg-treez-purple/90 backdrop-blur-sm rounded-md">
@@ -169,22 +179,37 @@ export function ImageGridTile({ image, sku }: ImageGridTileProps) {
           <option value="" className="bg-deep-space">
             Select...
           </option>
-          {DEFAULT_DESCRIPTORS.map((desc) => {
-            const isUsed = 
-              desc.value !== 'custom' &&
-              usedDescriptors.includes(desc.value) &&
-              image.descriptor !== desc.value
-            return (
+          
+          <optgroup label="─── Auto-Iteration ───" className="bg-deep-space">
+            {ITERATION_PRESETS.map((preset) => (
               <option
-                key={desc.value}
-                value={desc.value}
-                disabled={isUsed}
-                className="bg-deep-space text-white disabled:text-gray-600"
+                key={preset.value}
+                value={preset.value}
+                className="bg-deep-space text-white"
               >
-                {desc.label} {isUsed ? '(used)' : ''}
+                {preset.label}
               </option>
-            )
-          })}
+            ))}
+          </optgroup>
+          
+          <optgroup label="─── Descriptors ───" className="bg-deep-space">
+            {DEFAULT_DESCRIPTORS.map((desc) => {
+              const isUsed = 
+                desc.value !== 'custom' &&
+                usedDescriptors.includes(desc.value) &&
+                image.descriptor !== desc.value
+              return (
+                <option
+                  key={desc.value}
+                  value={desc.value}
+                  disabled={isUsed}
+                  className="bg-deep-space text-white disabled:text-gray-600"
+                >
+                  {desc.label} {isUsed ? '(used)' : ''}
+                </option>
+              )
+            })}
+          </optgroup>
         </select>
 
         {image.descriptor === 'custom' && (
