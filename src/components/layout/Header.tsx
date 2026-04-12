@@ -24,27 +24,31 @@ export function Header() {
     if (href.startsWith('#')) {
       e.preventDefault()
       
+      // Close mobile menu first
+      setIsMobileMenuOpen(false)
+      
       if (isLanding) {
         // On landing page, smooth scroll to section with header offset
-        const id = href.replace('#', '')
-        const element = document.getElementById(id)
-        if (element) {
-          const headerOffset = 64
-          const elementPosition = element.getBoundingClientRect().top
-          const offsetPosition = elementPosition + window.pageYOffset - headerOffset
-          
-          window.scrollTo({
-            top: offsetPosition,
-            behavior: 'smooth'
-          })
-        }
+        // Add slight delay to ensure menu closes first
+        setTimeout(() => {
+          const id = href.replace('#', '')
+          const element = document.getElementById(id)
+          if (element) {
+            const headerOffset = 64
+            const elementPosition = element.getBoundingClientRect().top
+            const offsetPosition = elementPosition + window.pageYOffset - headerOffset
+            
+            window.scrollTo({
+              top: offsetPosition,
+              behavior: 'smooth'
+            })
+          }
+        }, 100)
       } else {
         // On other pages, navigate to landing page with section as query param
         const section = href.replace('#', '')
         router.push(`/?scrollTo=${section}`)
       }
-      
-      setIsMobileMenuOpen(false)
     }
   }
 
