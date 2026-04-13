@@ -8,7 +8,6 @@ import { Menu, X } from 'lucide-react'
 import { Button } from '@/components/ui/Button'
 
 const navLinks = [
-  { name: 'Home', href: '#hero' },
   { name: 'How It Works', href: '#how-it-works' },
   { name: 'Features', href: '#features' },
   { name: 'Pricing', href: '#pricing' },
@@ -28,19 +27,15 @@ export function Header() {
       setIsMobileMenuOpen(false)
       
       if (isLanding) {
-        // On landing page, smooth scroll to section with header offset
+        // On landing page, use native scrollIntoView which respects CSS scroll-margin-top
         // Add slight delay to ensure menu closes first
         setTimeout(() => {
           const id = href.replace('#', '')
           const element = document.getElementById(id)
           if (element) {
-            const headerOffset = 64
-            const elementPosition = element.getBoundingClientRect().top
-            const offsetPosition = elementPosition + window.pageYOffset - headerOffset
-            
-            window.scrollTo({
-              top: offsetPosition,
-              behavior: 'smooth'
+            element.scrollIntoView({
+              behavior: 'smooth',
+              block: 'start',
             })
           }
         }, 100)

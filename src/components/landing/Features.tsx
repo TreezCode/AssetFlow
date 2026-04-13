@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import { Lock, Eye, Zap, Clock, Layers, MousePointerClick, Camera, Hash } from 'lucide-react'
+import { Lock, Eye, Layers, MousePointerClick, Camera, Hash } from 'lucide-react'
 import { landingCopy } from '@/lib/landing-copy'
 
 const icons: Record<string, typeof Lock> = {
@@ -17,7 +17,11 @@ export function Features() {
   const { heading, subheading, items } = landingCopy.features
 
   return (
-    <section id="features" className="py-16 sm:py-20 md:py-28 lg:py-32 bg-deep-space/50">
+    <section 
+      id="features" 
+      className="py-16 sm:py-20 md:py-28 lg:py-32 bg-deep-space/50"
+      style={{ scrollMarginTop: '120px' }}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div

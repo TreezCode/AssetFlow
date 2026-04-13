@@ -14,7 +14,11 @@ export function HowItWorks() {
   const { heading, subheading, steps } = landingCopy.howItWorks
 
   return (
-    <section id="how-it-works" className="py-16 sm:py-20 md:py-28 lg:py-32">
+    <section 
+      id="how-it-works" 
+      className="py-16 sm:py-20 md:py-28 lg:py-32"
+      style={{ scrollMarginTop: '120px' }}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <motion.div

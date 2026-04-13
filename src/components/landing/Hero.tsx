@@ -15,7 +15,7 @@ export function Hero() {
   return (
     <section
       id="hero"
-      className="relative flex flex-col items-center justify-start md:justify-center min-h-screen px-4 sm:px-6 lg:px-8 pt-20 pb-12 sm:py-24 md:py-28 lg:py-32"
+      className="relative flex flex-col items-center justify-start md:justify-center min-h-screen px-4 sm:px-6 lg:px-8 pt-20 pb-12 sm:py-24 md:py-28 lg:py-18"
     >
       {/* Gradient background accents */}
       <div className="absolute inset-0 pointer-events-none">
