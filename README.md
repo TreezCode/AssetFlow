@@ -145,8 +145,9 @@ vercel --prod
 ```
 
 **Environment Variables** (optional):
+- `NEXT_PUBLIC_SITE_URL` — Custom site URL for local development (defaults to `http://localhost:3000`)
+- `VERCEL_URL` — Automatically set by Vercel for preview/production deployments
 - `NEXT_PUBLIC_GA_ID` — Google Analytics tracking ID
-- `NEXT_PUBLIC_DOMAIN` — Production domain (defaults to renamify.app)
 
 ---
 

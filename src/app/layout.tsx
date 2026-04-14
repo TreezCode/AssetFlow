@@ -20,7 +20,11 @@ const spaceGrotesk = Space_Grotesk({
 })
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://renamify.app'),
+  metadataBase: new URL(
+    process.env.VERCEL_URL 
+      ? `https://${process.env.VERCEL_URL}` 
+      : process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'
+  ),
   title: {
     default: "Renamify — Product Image Renaming Tool | Build With Treez",
     template: "%s | Renamify",
@@ -64,7 +68,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://renamify.app",
+    url: "/",
     siteName: "Renamify",
     title: "Renamify — Product Image Renaming Tool",
     description:
@@ -121,7 +125,7 @@ export default function RootLayout({
       "name": "Build With Treez",
       "url": "https://buildwithtreez.com"
     },
-    "screenshot": "https://renamify.app/opengraph-image",
+    "screenshot": "/opengraph-image",
     "aggregateRating": {
       "@type": "AggregateRating",
       "ratingValue": "5",
@@ -135,6 +139,13 @@ export default function RootLayout({
       className={`${inter.variable} ${spaceGrotesk.variable} h-full antialiased`}
     >
       <head>
+        <link
+          rel="preload"
+          href="/_next/static/media/0c89a48fa5027cee-s.p.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
