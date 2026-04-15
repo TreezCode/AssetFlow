@@ -1,7 +1,7 @@
 import { ImageResponse } from 'next/og'
 
 export const runtime = 'edge'
-export const alt = 'Renamify - Product Image Renaming Tool'
+export const alt = 'Renamerly - Product Image Renaming Tool'
 export const size = {
   width: 1200,
   height: 630,
@@ -114,7 +114,7 @@ export default async function Image() {
                 filter: 'drop-shadow(0 0 40px rgba(145, 94, 255, 0.5))',
               }}
             >
-              Renamify
+              Renamerly
             </div>
           </div>
 

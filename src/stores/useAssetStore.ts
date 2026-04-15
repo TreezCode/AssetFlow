@@ -350,7 +350,7 @@ export const useAssetStore = create<AssetStore>()(
   },
     }),
     {
-      name: 'renamify-ui-state',
+      name: 'renamerly-ui-state',
       partialize: (state) => ({
         hasSeenOnboarding: state.hasSeenOnboarding,
       }),

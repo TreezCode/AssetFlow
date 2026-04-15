@@ -32,7 +32,7 @@ export const landingCopy = {
   },
 
   solution: {
-    heading: 'Renamify fixes it in under 30 seconds.',
+    heading: 'Renamerly fixes it in under 30 seconds.',
     body: 'Upload your images. Assign labels. Download perfectly named files.',
     reinforcement: 'No spreadsheets. No manual work. No headaches.',
   },
@@ -93,7 +93,7 @@ export const landingCopy = {
   audience: {
     heading: 'Perfect for teams of one.',
     subheading:
-      'Whether you run a store, shoot weddings, or manage client assets, Renamify keeps your files clean and consistent.',
+      'Whether you run a store, shoot weddings, or manage client assets, Renamerly keeps your files clean and consistent.',
     personas: [
       {
         title: 'Shopify store owners',
@@ -155,7 +155,7 @@ export const landingCopy = {
   finalCta: {
     heading: 'Stop renaming files manually.',
     subheading: 'Start organizing your product images the right way.',
-    primaryCta: 'Try Renamify Free',
+    primaryCta: 'Try Renamerly Free',
     secondaryCta: 'View Pricing',
   },
 } as const

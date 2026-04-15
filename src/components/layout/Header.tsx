@@ -63,7 +63,7 @@ export function Header() {
           >
             <img
               src="/brand/logo-full.webp"
-              alt="Renamify"
+              alt="Renamerly"
               height="48"
               className="h-[48px] w-auto"
             />

@@ -45,7 +45,7 @@ export default function TestCheckout() {
           Test Stripe Checkout
         </h1>
         <p className="text-white/60 mb-6">
-          Testing Renamify Pro subscription
+          Testing Renamerly Pro subscription
         </p>
         
         {error && (
@@ -56,7 +56,7 @@ export default function TestCheckout() {
 
         <div className="mb-6 p-4 bg-white/5 rounded-lg border border-white/10">
           <div className="flex items-center justify-between mb-2">
-            <span className="text-white/80">Renamify Pro</span>
+            <span className="text-white/80">Renamerly Pro</span>
             <span className="text-2xl font-bold text-white">$19/mo</span>
           </div>
           <ul className="text-sm text-white/60 space-y-1">

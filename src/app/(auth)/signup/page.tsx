@@ -87,7 +87,7 @@ export default function SignupPage() {
             We sent a verification link to <strong className="text-treez-cyan">{email}</strong>
           </p>
           <p className="text-sm text-gray-400">
-            Click the link in the email to verify your account and start using Renamify.
+            Click the link in the email to verify your account and start using Renamerly.
           </p>
           <AuthButton
             variant="secondary"

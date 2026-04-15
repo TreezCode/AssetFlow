@@ -50,13 +50,13 @@ export function Footer() {
               {/* Mobile: 120px tall - prominent on mobile */}
               <img
                 src="/brand/logo-full.webp"
-                alt="Renamify"
+                alt="Renamerly"
                 className="h-[120px] w-auto object-contain md:hidden"
               />
               {/* Desktop: 140px tall - matches reference design */}
               <img
                 src="/brand/logo-full.webp"
-                alt="Renamify"
+                alt="Renamerly"
                 className="h-[140px] w-auto object-contain hidden md:block"
               />
             </div>
@@ -117,7 +117,7 @@ export function Footer() {
 
         <div className="mt-8 pt-8 border-t border-white/10 text-center">
           <p className="text-gray-500 text-sm">
-            &copy; {new Date().getFullYear()} Renamify by Build With Treez. All rights reserved.
+            &copy; {new Date().getFullYear()} Renamerly by Build With Treez. All rights reserved.
           </p>
         </div>
       </div>

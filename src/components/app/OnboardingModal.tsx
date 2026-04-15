@@ -69,12 +69,12 @@ export function OnboardingModal() {
                 <div className="mb-3 sm:mb-4">
                   <img
                     src="/brand/logo-full.webp"
-                    alt="Renamify"
+                    alt="Renamerly"
                     className="h-10 sm:h-14 md:h-16 w-auto mx-auto"
                   />
                 </div>
                 <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-1 sm:mb-2">
-                  Welcome to Renamify!
+                  Welcome to Renamerly!
                 </h2>
                 <p className="text-sm sm:text-base text-gray-400">
                   Let&apos;s organize your images in 3 simple steps
