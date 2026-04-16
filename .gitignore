@@ -41,4 +41,4 @@ yarn-error.log*
 next-env.d.ts
 
 # Local development docs (analysis, artifacts, planning)
-/docs/docs-local/
+# /docs/docs-local/

@@ -438,67 +438,67 @@ CREATE TABLE subscription_events (
 
 ---
 
-### Phase 8: Advanced Premium Features ⏳ NEXT UP
-**Estimated Duration**: 4-5 sessions  
-**Goal**: Power-user features for professionals
+### Phase 8: Advanced Pro Features — Bulk Operations & AI Suite ⏳ NEXT UP
+**Estimated Duration**: 6-8 sessions (see dedicated plan: `.agents/plans/08-advanced-pro-features.md`)  
+**Goal**: Enterprise-grade bulk workflows + AI-powered SEO descriptor suite to decisively win the e-commerce professional market
 
-**Batch Operations** (Pro only):
-- Multi-select images
-- Bulk descriptor assignment
-- Auto-grouping by image similarity (AI-powered)
-- Preset workflows (e.g., "Shopify product set")
+**Key Strategic Decisions:**
+- ✅ Multi-select is FREE for all plans (already implemented — table-stakes feature, gating hurts conversions)
+- ✅ Bulk Pro operations center on CSV workflows — the real professional workflow tool
+- ✅ AI with SEO focus — not just renaming, but generating Google-optimized alt text and scored filenames
 
-**Smart Features** (Pro only):
-- AI-suggested descriptors based on image content
-- Duplicate image detection
-- Auto-crop and resize options
-- Background removal integration (remove.bg API)
+**Sprint 1 — Foundation (High value, low complexity):**
+- ⏳ Naming Preview Table — spreadsheet-style pre-export audit view
+- ⏳ CSV Export Manifest — download full rename mapping + alt text as CSV
+- ⏳ SEO Filename Quality Score — badge per image (green/yellow/red)
 
-**RAW Processing** (Pro only - NEW):
-- Full RAW file decoding and processing
-- RAW → JPEG/PNG conversion with quality settings
-- RAW → WebP export for web optimization
-- EXIF metadata batch editing (copyright, camera settings, etc.)
-- Date/time-based auto-naming from EXIF data
-- Camera make/model in filename templates
-- GPS location data extraction (when available)
-- Preserve or strip metadata on export
-- RAW histogram preview for exposure validation
-- Batch RAW adjustments (exposure, white balance - basic)
+**Sprint 2 — Platform Presets:**
+- ⏳ Platform naming presets: Shopify, Amazon, Etsy, WooCommerce, Generic, Custom
+- ⏳ Preset selector in toolbar (3 free, all Pro)
 
-**Export Enhancements** (Pro only):
-- CSV manifest file with EXIF data
-- Multiple export formats (ZIP, folders, cloud upload)
-- Dropbox/Google Drive integration
-- Custom watermarking
-- Output format per SKU group
-- Compression quality settings
+**Sprint 3 — AI Integration:**
+- ⏳ Supabase Edge Function: `analyze-image` → OpenAI Vision API
+- ⏳ AI Descriptor Suggestions per image (sparkle button, confidence %)
+- ⏳ SEO Alt Text Generator (50-125 chars, platform-aware)
+- ⏳ Bulk AI apply to unassigned selection
+- ⏳ AI consent/privacy modal
 
-**In Scope**:
-- ✅ Multi-select UI component
-- ✅ Bulk action toolbar
-- ✅ AI descriptor suggestions (OpenAI Vision API)
-- ✅ Export format picker
-- ✅ CSV manifest generation
-- ✅ RAW decoder (libraw-wasm or alternative)
-- ✅ EXIF metadata editor UI
-- ✅ RAW conversion settings panel
+**Sprint 4 — CSV Import:**
+- ⏳ CSV Import Wizard (3-step): upload → map columns → review matches
+- ⏳ Fuzzy filename matching (exact + pattern)
+- ⏳ Match review table (confirm/override before applying)
+
+**Sprint 5 — Group Operations:**
+- ⏳ Group-level bulk actions (apply template/descriptor to whole group)
+- ⏳ Export per-group (one ZIP per SKU)
+- ⏳ Drag-to-reorder images within a group
+
+**In Scope (see full detail in `08-advanced-pro-features.md`)**:
+- ⏳ Naming Preview Table (pre-export audit)
+- ⏳ CSV Export Manifest (Pro)
+- ⏳ CSV Import with mapping wizard (Pro)
+- ⏳ Platform naming presets — Shopify, Amazon, Etsy, WooCommerce (Free: 3, Pro: all)
+- ⏳ AI descriptor suggestions via OpenAI Vision (Pro)
+- ⏳ SEO alt text generation per image (Pro)
+- ⏳ SEO filename quality scoring (Free + Pro)
+- ⏳ Group-level bulk actions (Pro)
+- ⏳ Per-group ZIP export (Pro)
 - ✅ Format-specific export options
 
-**Out of Scope**:
-- ❌ Custom AI model training
-- ❌ Video file support
-- ❌ 3D model support
-- ❌ Advanced RAW editing (curves, HSL, etc.) - use Lightroom for that
-- ❌ RAW lens correction
-- ❌ RAW noise reduction
+**Out of Scope (Phase 9+)**:
+- ❌ Shopify/Etsy direct upload (OAuth integration)
+- ❌ Background removal (remove.bg API)
+- ❌ Duplicate image detection
+- ❌ Team collaboration
+- ❌ Mobile app
+- ❌ API access for developers
 
 **Technical Notes**:
-- Use `libraw-wasm` for client-side RAW decoding (~800kb bundle impact)
-- Cache decoded RAW previews in IndexedDB for performance
-- Limit concurrent RAW processing to 2-3 files (memory constraints)
-- Show progress indicator for RAW conversion (can take 3-5s per file)
-- Consider worker threads for RAW processing to keep UI responsive
+- AI Edge Function uses `gpt-4o-mini` (~$0.003/image) — rate-limit to 20 req/session
+- CSV parsing: PapaParse (browser-safe, no server needed)
+- OpenAI API key stored as Supabase Edge Function secret (never exposed client-side)
+- Privacy policy update needed before AI launch (images temporarily sent to OpenAI)
+- See `08-advanced-pro-features.md` for full architecture and implementation order
 
 ---
 
