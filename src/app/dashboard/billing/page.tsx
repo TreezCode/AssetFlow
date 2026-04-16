@@ -138,7 +138,7 @@ export default function BillingPage() {
             <div>
               <h2 className="text-2xl font-bold">{isPro ? 'Pro Plan' : 'Free Plan'}</h2>
               <p className="text-gray-400">
-                {isPro ? '$19 per month' : 'No credit card required'}
+                {isPro ? '$9 per month' : 'No credit card required'}
               </p>
             </div>
           </div>

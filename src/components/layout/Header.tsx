@@ -21,9 +21,10 @@ export function Header() {
   const pathname = usePathname()
   const router = useRouter()
   const isLanding = pathname === '/'
-  const supabase = createClient()
 
   useEffect(() => {
+    const supabase = createClient()
+    
     // Get initial user
     supabase.auth.getUser().then(({ data: { user } }) => {
       setUser(user)
@@ -36,7 +37,7 @@ export function Header() {
     })
 
     return () => subscription.unsubscribe()
-  }, [supabase])
+  }, [])
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     // Close mobile menu first
