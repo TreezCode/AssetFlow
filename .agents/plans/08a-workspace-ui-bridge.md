@@ -1,5 +1,5 @@
 # Plan 08a: Workspace UI Bridge
-**Status:** 📋 PLANNED — implement BEFORE Phase 8 Sprint 1  
+**Status:** ✅ COMPLETE — April 16, 2026  
 **Prerequisite to:** `08-advanced-pro-features.md`  
 **Goal:** Replace the `/app` page's marketing header+footer with a professional sidebar workspace UI that is pixel-identical to the dashboard, and bridge Projects/Templates from the dashboard into the live workspace.
 
@@ -141,39 +141,41 @@ renameCurrentSession: (name: string) => void
 
 ## Implementation Plan
 
-### Phase A: Layout Shell (session 1, part 1)
+### Phase A: Layout Shell ✅
 **Goal:** Get the workspace sidebar visible and pixel-matched. No functional features yet.
 
-- [ ] `ConditionalLayout.tsx` — add `/app` to the exclusion list (alongside `/dashboard`)
-- [ ] `src/app/app/layout.tsx` — new file, reads optional auth, passes to WorkspaceLayout
-- [ ] `WorkspaceLayout.tsx` — full layout component with sidebar + content area
-- [ ] `WorkspaceSidebar.tsx` — sidebar with static placeholder content (real data in Phase B/C)
-- [ ] `src/app/app/page.tsx` — remove `pt-20` and `pb-6` offset, adjust padding for sidebar layout
-- [ ] Verify: Sidebar collapses/expands identically to dashboard, `sidebar-collapsed` localStorage shared, logo identical
+- [x] `ConditionalLayout.tsx` — added `/app` to exclusion list alongside `/dashboard`
+- [x] `src/app/app/layout.tsx` — server component, reads optional auth, no redirect for guests
+- [x] `WorkspaceLayout.tsx` — full layout with animated sidebar + content area
+- [x] `WorkspaceSidebar.tsx` — complete sidebar with all sections (session, templates, stats, bottom actions)
+- [x] `src/app/app/page.tsx` — removed `pt-20`/`pt-24` header offset, adjusted padding
+- [x] **Extra:** Fixed initial animation shift on both sidebars (`initial={{ width: sidebarWidth }}` to match `animate`)
+- [x] **Extra:** Unified mobile UX — Dashboard mobile changed from slide-down dropdown to slide-from-left drawer (matches workspace)
 
 ---
 
-### Phase B: Project Bridge (session 1, part 2)
+### Phase B: Project Bridge ✅
 **Goal:** Dashboard Projects can open into the workspace. Workspace can save current session.
 
-- [ ] `useAssetStore.ts` — add `currentProject`, `setCurrentProject`, `loadProject`
-- [ ] `types/index.ts` — update `AssetStore` interface
-- [ ] `src/app/app/page.tsx` — read `?project=id` query param → fetch project → call `loadProject`
-- [ ] `ProjectsLibrary.tsx` — add "Open in Workspace" button → `router.push('/app?project={id}')`
-- [ ] `WorkspaceSidebar.tsx` — show project name from store, editable inline
-- [ ] `WorkspaceSidebar.tsx` — "Save Project" button calls `useCreateProject`/`useUpdateProject` (Pro only, UpgradeModal for free)
+- [x] `useAssetStore.ts` — added `currentProject`, `setCurrentProject`, `loadProject`, `renameCurrentSession`
+- [x] `types/index.ts` — updated `AssetStore` interface with `CurrentProject` type
+- [x] `src/app/app/page.tsx` — `ProjectLoader` component (Suspense-wrapped) reads `?project=id`, fetches via `useProject`, calls `loadProject`
+- [x] `ProjectsLibrary.tsx` — hover-reveal "Open in Workspace" CTA button → `/app?project={id}`; dropdown also updated
+- [x] `WorkspaceSidebar.tsx` — project name from store, inline `SessionNameEditor` (click pencil to rename)
+- [x] `WorkspaceSidebar.tsx` — Save button (Pro: creates/updates via hooks; Free: `UpgradeModal`; Guest: sign-in link)
+- [x] **Extra:** Added "Workspace" (`Zap` icon) as nav item in `DashboardLayout` — closes the navigation loop in both directions
 
 ---
 
-### Phase C: Templates & Live Stats (session 1, part 3)
+### Phase C: Templates & Live Stats ✅ (partial)
 **Goal:** Templates accessible without leaving workspace. Session stats live in sidebar.
 
-- [ ] `WorkspaceSidebar.tsx` — fetch user's templates (if authenticated), list top 5
-- [ ] Template click → apply template: sets `descriptors` pattern on all unassigned images in current session
-- [ ] "Browse All" → links to `/dashboard/templates`
-- [ ] `WorkspaceSidebar.tsx` — live stats from `useAssetStore`: image count, products, configured count
-- [ ] Stats progress bar (animated, matches brand colors)
-- [ ] Mobile: session info and stats accessible from the drawer
+- [x] `WorkspaceSidebar.tsx` — fetches user's templates via `useTemplates(userId)`, lists top 4
+- [x] "Browse All" → links to `/dashboard/templates`
+- [x] `WorkspaceSidebar.tsx` — live stats: image count/limit with animated progress bar, unique SKUs, configured count
+- [x] Stats progress bar (animated, brand colors: cyan → yellow → red based on usage)
+- [x] Mobile: session section, stats, and all actions accessible from the slide-in drawer
+- [~] **Deferred → Phase 8 Sprint 1:** Template click → direct apply in workspace. Templates currently link to `/dashboard/templates`. In-workspace apply requires the `NamingPreviewTable` and platform preset infrastructure being built in Sprint 1, so it fits naturally there.
 
 ---
 
