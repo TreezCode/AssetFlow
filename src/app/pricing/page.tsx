@@ -23,7 +23,7 @@ const pricingTiers = [
   },
   {
     name: 'Pro',
-    price: '$9',
+    price: '$19',
     priceSubtext: '/month',
     description: 'For professionals who need unlimited power',
     badge: 'Most Popular',
