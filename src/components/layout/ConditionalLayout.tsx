@@ -15,11 +15,11 @@ interface ConditionalLayoutProps {
 export function ConditionalLayout({ children }: ConditionalLayoutProps) {
   const pathname = usePathname()
   
-  // Hide Header/Footer on dashboard routes
+  // Hide Header/Footer on dashboard and workspace routes — they manage their own layout
   const isDashboard = pathname?.startsWith('/dashboard')
-  
-  if (isDashboard) {
-    // Dashboard has its own layout with sidebar - just show content
+  const isWorkspace = pathname?.startsWith('/app')
+
+  if (isDashboard || isWorkspace) {
     return <main id="main-content" className="flex-1">{children}</main>
   }
   

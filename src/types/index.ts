@@ -45,6 +45,11 @@ export interface ConfirmDialogState {
   onConfirm: () => void
 }
 
+export interface CurrentProject {
+  id: string
+  name: string
+}
+
 export interface AssetStore {
   images: AssetImage[]
   hasSeenOnboarding: boolean
@@ -53,6 +58,7 @@ export interface AssetStore {
   selectedImageIds: string[]
   toasts: Toast[]
   confirmDialog: ConfirmDialogState | null
+  currentProject: CurrentProject | null
 
   addImages: (files: File[], limit?: number) => Promise<void>
   removeImage: (id: string) => void
@@ -61,6 +67,10 @@ export interface AssetStore {
   setImageDescriptor: (imageId: string, descriptor: string) => void
   setCustomDescriptor: (imageId: string, text: string) => void
   reset: () => void
+
+  setCurrentProject: (project: CurrentProject | null) => void
+  loadProject: (project: { id: string; name: string }) => void
+  renameCurrentSession: (name: string) => void
 
   setOnboardingComplete: () => void
   toggleSkuCollapse: (sku: string) => void

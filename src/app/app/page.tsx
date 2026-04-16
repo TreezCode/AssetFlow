@@ -1,8 +1,10 @@
 'use client'
 
-import { useEffect, useMemo } from 'react'
+import { useEffect, useMemo, Suspense } from 'react'
+import { useSearchParams } from 'next/navigation'
 import { motion } from 'framer-motion'
 import { useAssetStore } from '@/stores/useAssetStore'
+import { useProject } from '@/hooks/useProjects'
 import { ErrorBoundary } from '@/components/ErrorBoundary'
 import { DragDropProvider } from '@/components/app/DragDropProvider'
 import { AppToolbar } from '@/components/app/AppToolbar'
@@ -14,6 +16,23 @@ import { ImagesWithoutSKU } from '@/components/app/ImagesWithoutSKU'
 import { ExportControls } from '@/components/app/ExportControls'
 import { OnboardingModal } from '@/components/app/OnboardingModal'
 import { ConfirmDialog } from '@/components/ui/ConfirmDialog'
+
+function ProjectLoader() {
+  const searchParams = useSearchParams()
+  const projectId = searchParams.get('project') ?? undefined
+  const loadProject = useAssetStore((state) => state.loadProject)
+  const addToast = useAssetStore((state) => state.addToast)
+  const { project } = useProject(projectId)
+
+  useEffect(() => {
+    if (project) {
+      loadProject({ id: project.id, name: project.name })
+      addToast('success', `"${project.name}" loaded — re-upload your files to restore assignments`)
+    }
+  }, [project, loadProject, addToast])
+
+  return null
+}
 
 export default function AppPage() {
   const images = useAssetStore((state) => state.images)
@@ -48,6 +67,9 @@ export default function AppPage() {
 
   return (
     <ErrorBoundary>
+      <Suspense fallback={null}>
+        <ProjectLoader />
+      </Suspense>
       <OnboardingModal />
       
       {/* Global Confirmation Dialog */}
@@ -64,7 +86,7 @@ export default function AppPage() {
         />
       )}
       
-      <main className="min-h-screen pt-20 pb-6 sm:pt-24 sm:pb-8 px-4 sm:px-6 lg:px-8">
+      <main className="min-h-screen pt-6 pb-6 sm:pt-8 sm:pb-8 px-4 sm:px-6 lg:px-8">
         <DragDropProvider>
           <motion.div
             initial={{ opacity: 0, y: 20 }}

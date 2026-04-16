@@ -1,6 +1,6 @@
 import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
-import type { AssetStore, AssetImage, ResolvedFilename, ToastType } from '@/types'
+import type { AssetStore, AssetImage, ResolvedFilename, ToastType, CurrentProject } from '@/types'
 import { generateFilename, isFilenameComplete, getFileExtension } from '@/lib/filename'
 import { MAX_FREE_IMAGES, ITERATION_PRESETS } from '@/lib/constants'
 import { validateImageFile, getTotalFileSize } from '@/lib/file-validation'
@@ -26,6 +26,7 @@ export const useAssetStore = create<AssetStore>()(
       selectedImageIds: [],
       toasts: [],
       confirmDialog: null,
+      currentProject: null,
 
   addImages: async (files: File[], limit: number = MAX_FREE_IMAGES) => {
     const { images } = get()
@@ -212,7 +213,21 @@ export const useAssetStore = create<AssetStore>()(
   reset: () => {
     const { images } = get()
     cleanupThumbnails(images)
-    set({ images: [], selectedImageIds: [] })
+    set({ images: [], selectedImageIds: [], currentProject: null })
+  },
+
+  setCurrentProject: (project: CurrentProject | null) => {
+    set({ currentProject: project })
+  },
+
+  loadProject: (project: { id: string; name: string }) => {
+    set({ currentProject: { id: project.id, name: project.name } })
+  },
+
+  renameCurrentSession: (name: string) => {
+    set((state) => ({
+      currentProject: state.currentProject ? { ...state.currentProject, name } : { id: '', name },
+    }))
   },
 
   getResolvedFilenames: (): ResolvedFilename[] => {

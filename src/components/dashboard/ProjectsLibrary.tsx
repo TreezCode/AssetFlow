@@ -15,6 +15,7 @@ import {
   X,
 } from 'lucide-react'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import { useProjects, useDeleteProject } from '@/hooks/useProjects'
 import { Button } from '@/components/ui/Button'
 import type { Tables } from '@/lib/supabase/database.types'
@@ -107,6 +108,7 @@ function ProjectCard({
   onDelete: (project: Project) => void
 }) {
   const [menuOpen, setMenuOpen] = useState(false)
+  const router = useRouter()
   const imageCount = getImageCount(project.images)
 
   return (
@@ -142,14 +144,13 @@ function ProjectCard({
                 className="absolute right-0 top-8 z-20 bg-cosmic-gray border border-white/10 rounded-xl shadow-xl min-w-[140px] overflow-hidden"
                 onMouseLeave={() => setMenuOpen(false)}
               >
-                <Link
-                  href="/app"
-                  className="flex items-center gap-2 px-4 py-2.5 text-sm text-gray-300 hover:bg-white/10 hover:text-white transition-colors"
-                  onClick={() => setMenuOpen(false)}
+                <button
+                  onClick={() => { setMenuOpen(false); router.push(`/app?project=${project.id}`) }}
+                  className="flex items-center gap-2 px-4 py-2.5 text-sm text-gray-300 hover:bg-white/10 hover:text-white transition-colors w-full text-left"
                 >
                   <ExternalLink className="w-3.5 h-3.5" />
-                  Open in App
-                </Link>
+                  Open in Workspace
+                </button>
                 <button
                   onClick={() => {
                     setMenuOpen(false)
@@ -170,7 +171,7 @@ function ProjectCard({
       <h3 className="text-white font-semibold mb-1 truncate pr-2">{project.name}</h3>
 
       {/* Meta */}
-      <div className="flex items-center gap-4 mt-3 pt-3 border-t border-white/5">
+      <div className="flex items-center gap-4 mb-4 pt-3 border-t border-white/5">
         <span className="flex items-center gap-1.5 text-xs text-gray-500">
           <ImageIcon className="w-3.5 h-3.5" />
           {imageCount} {imageCount === 1 ? 'image' : 'images'}
@@ -180,6 +181,18 @@ function ProjectCard({
           {formatDate(project.created_at)}
         </span>
       </div>
+
+      {/* Open CTA */}
+      <button
+        onClick={() => router.push(`/app?project=${project.id}`)}
+        className="w-full flex items-center justify-center gap-2 py-2 rounded-xl
+          bg-treez-purple/10 hover:bg-treez-purple/20 border border-treez-purple/20 hover:border-treez-purple/40
+          text-treez-purple text-sm font-medium transition-all duration-200
+          opacity-0 group-hover:opacity-100 translate-y-1 group-hover:translate-y-0"
+      >
+        <ExternalLink className="w-3.5 h-3.5" />
+        Open in Workspace
+      </button>
     </motion.div>
   )
 }
