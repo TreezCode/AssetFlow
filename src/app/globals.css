@@ -23,21 +23,76 @@ body {
   }
 }
 
-@theme {
-  /* Brand Colors */
-  --color-treez-purple: #915eff;
-  --color-treez-cyan: #00d4ff;
-  --color-treez-pink: #ff6b9d;
+/* Root color variables - Dark Mode (default) */
+:root {
+  /* Brand Colors - Static across themes */
+  --brand-purple: #915eff;
+  --brand-cyan: #00d4ff;
+  --brand-pink: #ff6b9d;
 
-  /* Background Colors */
-  --color-deep-space: #0a0a0a;
-  --color-cosmic-gray: #1a1a2e;
-
-  /* Semantic Colors */
+  /* Semantic Background Colors */
+  --color-bg-primary: #0a0a0a;        /* Main background */
+  --color-bg-secondary: #1a1a2e;      /* Cards, elevated surfaces */
+  --color-bg-tertiary: #2a2a3e;       /* Hover states, inputs */
+  
+  /* Surface colors with transparency */
+  --color-surface-glass: rgba(255, 255, 255, 0.05);
+  --color-surface-glass-hover: rgba(255, 255, 255, 0.10);
+  
+  /* Border colors */
+  --color-border-subtle: rgba(255, 255, 255, 0.10);
+  --color-border-medium: rgba(255, 255, 255, 0.20);
+  --color-border-strong: rgba(255, 255, 255, 0.30);
+  
+  /* Text colors */
+  --color-text-primary: #f8f8f8;      /* Headings, primary text */
+  --color-text-secondary: #a0a0a0;    /* Secondary text */
+  --color-text-tertiary: #6b7280;     /* Placeholder, disabled */
+  
+  /* Status Colors */
   --color-success: #10b981;
   --color-warning: #f59e0b;
   --color-error: #ef4444;
   --color-info: #3b82f6;
+}
+
+/* Light Mode Variables */
+:root[data-theme="light"] {
+  /* Inverted backgrounds */
+  --color-bg-primary: #ffffff;
+  --color-bg-secondary: #f9fafb;
+  --color-bg-tertiary: #f3f4f6;
+  
+  /* Surface colors for light mode */
+  --color-surface-glass: rgba(0, 0, 0, 0.03);
+  --color-surface-glass-hover: rgba(0, 0, 0, 0.06);
+  
+  /* Border colors for light mode */
+  --color-border-subtle: rgba(0, 0, 0, 0.10);
+  --color-border-medium: rgba(0, 0, 0, 0.15);
+  --color-border-strong: rgba(0, 0, 0, 0.20);
+  
+  /* Inverted text */
+  --color-text-primary: #1a1a1a;
+  --color-text-secondary: #4b5563;
+  --color-text-tertiary: #9ca3af;
+}
+
+@theme {
+  /* Brand Colors - Use CSS variables */
+  --color-treez-purple: var(--brand-purple);
+  --color-treez-cyan: var(--brand-cyan);
+  --color-treez-pink: var(--brand-pink);
+
+  /* Background Colors - Semantic */
+  --color-deep-space: var(--color-bg-primary);
+  --color-cosmic-gray: var(--color-bg-secondary);
+
+  /* Semantic Colors */
+  --color-success: var(--color-success);
+  --color-warning: var(--color-warning);
+  --color-error: var(--color-error);
+  --color-info: var(--color-info);
 
   /* Fonts */
   --font-sans: var(--font-inter);
