@@ -92,15 +92,20 @@ export function DashboardLayout({ children, user }: DashboardLayoutProps) {
               />
               <AnimatePresence initial={false}>
                 {!isCollapsed && (
-                  <motion.span
+                  <motion.div
                     initial={{ opacity: 0, width: 0 }}
                     animate={{ opacity: 1, width: 'auto' }}
                     exit={{ opacity: 0, width: 0 }}
                     transition={{ duration: 0.2, ease: EASE }}
-                    className="text-xl font-bold font-display bg-linear-to-r from-treez-purple to-treez-cyan bg-clip-text text-transparent whitespace-nowrap overflow-hidden group-hover:opacity-80 transition-opacity"
+                    className="overflow-hidden shrink-0"
                   >
-                    Renamerly
-                  </motion.span>
+                    <img
+                      src="/brand/logo-name.webp"
+                      alt=""
+                      aria-hidden="true"
+                      className="h-5 w-auto"
+                    />
+                  </motion.div>
                 )}
               </AnimatePresence>
             </Link>
@@ -238,10 +243,15 @@ export function DashboardLayout({ children, user }: DashboardLayoutProps) {
             <div className="flex items-center justify-between h-16 px-4 sm:px-6">
               <Link href="/" className="flex items-center gap-2 cursor-pointer">
                 <img
-                  src="/brand/logo-full.webp"
+                  src="/brand/logo-icon.webp"
                   alt="Renamerly"
-                  height="48"
-                  className="h-[48px] w-auto"
+                  className="h-9 w-auto"
+                />
+                <img
+                  src="/brand/logo-name.webp"
+                  alt=""
+                  aria-hidden="true"
+                  className="h-5 w-auto"
                 />
               </Link>
               <button

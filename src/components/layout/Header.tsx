@@ -82,10 +82,15 @@ export function Header() {
             }}
           >
             <img
-              src="/brand/logo-full.webp"
+              src="/brand/logo-icon.webp"
               alt="Renamerly"
-              height="48"
-              className="h-[48px] w-auto"
+              className="h-9 w-auto"
+            />
+            <img
+              src="/brand/logo-name.webp"
+              alt=""
+              aria-hidden="true"
+              className="h-5 w-auto"
             />
           </Link>
 
