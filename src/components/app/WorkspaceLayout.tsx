@@ -36,6 +36,7 @@ export function WorkspaceLayout({ children, user }: WorkspaceLayoutProps) {
 
         {/* ── Desktop Sidebar ── */}
         <motion.aside
+          initial={{ width: sidebarWidth }}
           animate={{ width: sidebarWidth }}
           transition={{ duration: 0.3, ease: EASE }}
           className="hidden lg:flex lg:flex-col lg:fixed lg:inset-y-0 z-30
@@ -50,6 +51,7 @@ export function WorkspaceLayout({ children, user }: WorkspaceLayoutProps) {
 
         {/* ── Main Content (Desktop) ── */}
         <motion.div
+          initial={{ paddingLeft: sidebarWidth }}
           animate={{ paddingLeft: sidebarWidth }}
           transition={{ duration: 0.3, ease: EASE }}
           className="flex-1 min-w-0 w-full hidden lg:block"

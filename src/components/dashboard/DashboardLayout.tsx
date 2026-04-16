@@ -13,6 +13,7 @@ import {
   Menu,
   X,
   ChevronsLeft,
+  Zap,
 } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 
@@ -22,6 +23,7 @@ const EASE = [0.4, 0, 0.2, 1] as const
 
 const navItems = [
   { href: '/dashboard', label: 'Overview', icon: LayoutDashboard },
+  { href: '/app', label: 'Workspace', icon: Zap },
   { href: '/dashboard/projects', label: 'Projects', icon: FolderOpen },
   { href: '/dashboard/templates', label: 'Templates', icon: FileText },
   { href: '/dashboard/billing', label: 'Billing', icon: CreditCard },
@@ -72,6 +74,7 @@ export function DashboardLayout({ children, user }: DashboardLayoutProps) {
 
         {/* ── Desktop Sidebar ── */}
         <motion.aside
+          initial={{ width: sidebarWidth }}
           animate={{ width: sidebarWidth }}
           transition={{ duration: 0.3, ease: EASE }}
           className="hidden lg:flex lg:flex-col lg:fixed lg:inset-y-0 z-30
@@ -229,10 +232,10 @@ export function DashboardLayout({ children, user }: DashboardLayoutProps) {
 
         {/* ── Main Content ── */}
         <motion.div
+          initial={{ paddingLeft: sidebarWidth }}
           animate={{ paddingLeft: sidebarWidth }}
           transition={{ duration: 0.3, ease: EASE }}
-          className="flex-1 min-w-0 w-full hidden lg:block"
-        >
+          className="flex-1 min-w-0 w-full hidden lg:block">
           <main className="min-h-screen">{children}</main>
         </motion.div>
 
@@ -268,49 +271,83 @@ export function DashboardLayout({ children, user }: DashboardLayoutProps) {
             </div>
           </header>
 
-          {/* Mobile Menu */}
+          {/* Mobile Drawer */}
           <AnimatePresence>
             {isMobileMenuOpen && (
-              <motion.div
-                initial={{ opacity: 0, height: 0 }}
-                animate={{ opacity: 1, height: 'auto' }}
-                exit={{ opacity: 0, height: 0 }}
-                transition={{ duration: 0.3 }}
-                className="bg-white/5 backdrop-blur-xl border-b border-white/10 overflow-hidden"
-              >
-                <nav className="px-4 py-4 space-y-2">
-                  {navItems.map((item) => {
-                    const Icon = item.icon
-                    const isActive = pathname === item.href
-                    return (
-                      <Link
-                        key={item.href}
-                        href={item.href}
-                        onClick={() => setIsMobileMenuOpen(false)}
-                        className={`flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-300 ${
-                          isActive
-                            ? 'bg-linear-to-r from-treez-purple/20 to-treez-cyan/20 border border-treez-purple/30 text-white'
-                            : 'text-gray-400 hover:text-white hover:bg-white/5'
-                        }`}
-                      >
-                        <Icon className="w-5 h-5" />
-                        <span className="font-medium">{item.label}</span>
-                      </Link>
-                    )
-                  })}
-                  <div className="pt-4 mt-4 border-t border-white/10">
-                    <form action="/auth/signout" method="post">
-                      <button
-                        type="submit"
-                        className="flex items-center gap-3 px-4 py-3 w-full rounded-xl text-gray-400 hover:text-white hover:bg-white/5 transition-all duration-300"
-                      >
-                        <LogOut className="w-5 h-5" />
-                        <span className="font-medium">Sign Out</span>
-                      </button>
-                    </form>
+              <>
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.2 }}
+                  className="fixed inset-0 z-40 bg-black/60 backdrop-blur-sm"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                />
+                <motion.div
+                  initial={{ x: '-100%' }}
+                  animate={{ x: 0 }}
+                  exit={{ x: '-100%' }}
+                  transition={{ duration: 0.3, ease: EASE }}
+                  className="fixed inset-y-0 left-0 z-50 w-72 bg-deep-space border-r border-white/10
+                    flex flex-col overflow-y-auto"
+                >
+                  <div className="flex flex-col flex-1 py-6">
+                    {/* Logo */}
+                    <Link
+                      href="/"
+                      onClick={() => setIsMobileMenuOpen(false)}
+                      className="mb-8 flex items-center gap-3 px-6 shrink-0"
+                    >
+                      <img src="/brand/logo-icon.webp" alt="Renamerly" className="h-9 w-auto shrink-0" />
+                      <img src="/brand/logo-name.webp" alt="" aria-hidden="true" className="h-5 w-auto" />
+                    </Link>
+
+                    {/* Nav */}
+                    <nav className="flex-1 space-y-1 px-3">
+                      {navItems.map((item) => {
+                        const Icon = item.icon
+                        const isActive = pathname === item.href
+                        return (
+                          <Link
+                            key={item.href}
+                            href={item.href}
+                            onClick={() => setIsMobileMenuOpen(false)}
+                            className={`flex items-center gap-3 py-3 px-3 rounded-xl transition-all duration-200
+                              ${
+                                isActive
+                                  ? 'bg-linear-to-r from-treez-purple/20 to-treez-cyan/20 border border-treez-purple/30 text-white'
+                                  : 'text-gray-400 hover:text-white hover:bg-white/5'
+                              }`}
+                          >
+                            <Icon className="w-5 h-5 shrink-0" />
+                            <span className="font-medium">{item.label}</span>
+                          </Link>
+                        )
+                      })}
+                    </nav>
+
+                    {/* User + Sign Out */}
+                    <div className="mt-6 pt-6 border-t border-white/10 px-3 shrink-0">
+                      <div className="mb-3 px-3">
+                        <p className="text-xs text-gray-500 mb-0.5">Signed in as</p>
+                        <p className="text-sm text-white font-medium truncate">
+                          {user.full_name || user.email}
+                        </p>
+                      </div>
+                      <form action="/auth/signout" method="post">
+                        <button
+                          type="submit"
+                          className="flex items-center gap-3 py-3 px-3 w-full rounded-xl text-gray-400
+                            hover:text-white hover:bg-white/5 transition-all duration-200"
+                        >
+                          <LogOut className="w-5 h-5 shrink-0" />
+                          <span className="font-medium">Sign Out</span>
+                        </button>
+                      </form>
+                    </div>
                   </div>
-                </nav>
-              </motion.div>
+                </motion.div>
+              </>
             )}
           </AnimatePresence>
 
