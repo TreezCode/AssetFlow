@@ -85,13 +85,24 @@ export function DashboardLayout({ children, user }: DashboardLayoutProps) {
               className={`mb-8 flex items-center group shrink-0 transition-all duration-300
                 ${isCollapsed ? 'justify-center px-0' : 'gap-3 px-6'}`}
             >
-              <motion.img
-                src={isCollapsed ? '/brand/logo-icon.webp' : '/brand/logo-full.webp'}
+              <img
+                src="/brand/logo-icon.webp"
                 alt="Renamerly"
-                animate={{ height: isCollapsed ? 32 : 48 }}
-                transition={{ duration: 0.3, ease: EASE }}
-                className="w-auto shrink-0"
+                className="h-9 w-auto shrink-0"
               />
+              <AnimatePresence initial={false}>
+                {!isCollapsed && (
+                  <motion.span
+                    initial={{ opacity: 0, width: 0 }}
+                    animate={{ opacity: 1, width: 'auto' }}
+                    exit={{ opacity: 0, width: 0 }}
+                    transition={{ duration: 0.2, ease: EASE }}
+                    className="text-xl font-bold font-display bg-linear-to-r from-treez-purple to-treez-cyan bg-clip-text text-transparent whitespace-nowrap overflow-hidden group-hover:opacity-80 transition-opacity"
+                  >
+                    Renamerly
+                  </motion.span>
+                )}
+              </AnimatePresence>
             </Link>
 
             {/* Navigation */}
