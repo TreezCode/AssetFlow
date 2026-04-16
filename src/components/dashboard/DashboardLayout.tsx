@@ -99,7 +99,7 @@ export function DashboardLayout({ children, user }: DashboardLayoutProps) {
         </aside>
 
         {/* Main Content */}
-        <div className="flex-1 lg:pl-64">
+        <div className="flex-1 min-w-0 w-full lg:pl-64">
           {/* Mobile Header - Matches main Header exactly */}
           <header className="lg:hidden sticky top-0 z-40 bg-deep-space/95 backdrop-blur-xl border-b border-white/10">
             <div className="flex items-center justify-between h-16 px-4 sm:px-6">

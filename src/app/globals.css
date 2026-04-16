@@ -133,6 +133,7 @@ body {
 body {
   background: var(--color-deep-space);
   color: #f8f8f8;
+  scrollbar-gutter: stable;
 }
 
 @media (prefers-reduced-motion: reduce) {
