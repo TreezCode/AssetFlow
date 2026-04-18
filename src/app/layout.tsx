@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import Script from "next/script"
 import { Inter, Space_Grotesk } from "next/font/google"
 import { Analytics } from "@vercel/analytics/react"
 import { ConditionalLayout } from "@/components/layout/ConditionalLayout"
@@ -126,13 +127,10 @@ export default function RootLayout({
       "name": "Build With Treez",
       "url": "https://buildwithtreez.com"
     },
-    "screenshot": "/opengraph-image",
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "5",
-      "ratingCount": "1"
-    }
+    "screenshot": "/opengraph-image"
   }
+
+  const gaId = process.env.NEXT_PUBLIC_GA_ID
 
   return (
     <html
@@ -157,6 +155,22 @@ export default function RootLayout({
         <ConditionalLayout>{children}</ConditionalLayout>
         <ToastProvider />
         <Analytics />
+        {gaId && (
+          <>
+            <Script
+              src={`https://www.googletagmanager.com/gtag/js?id=${gaId}`}
+              strategy="afterInteractive"
+            />
+            <Script id="ga4-init" strategy="afterInteractive">
+              {`
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', '${gaId}', { send_page_view: true });
+              `}
+            </Script>
+          </>
+        )}
       </body>
     </html>
   )
