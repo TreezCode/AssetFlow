@@ -1,5 +1,7 @@
 'use client'
 
+import { useEffect } from 'react'
+import { useSearchParams } from 'next/navigation'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { FolderOpen, FileText, Image, TrendingUp, Plus, ArrowRight } from 'lucide-react'
@@ -8,6 +10,7 @@ import { useTemplates } from '@/hooks/useTemplates'
 import { useUsageTracking } from '@/hooks/useUsageTracking'
 import { useSubscription } from '@/hooks/useSubscription'
 import { Button } from '@/components/ui/Button'
+import { gtagEvent } from '@/lib/gtag'
 
 interface DashboardOverviewProps {
   userId: string
@@ -19,6 +22,16 @@ export function DashboardOverview({ userId, userName }: DashboardOverviewProps) 
   const { templates, loading: templatesLoading } = useTemplates(userId)
   const { usage, loading: usageLoading } = useUsageTracking(userId)
   const { loading: subscriptionLoading, isPro } = useSubscription()
+  const searchParams = useSearchParams()
+
+  useEffect(() => {
+    if (searchParams.get('success') === 'true') {
+      gtagEvent('subscribe', { plan: 'pro' })
+    }
+    if (searchParams.get('new_user') === 'true') {
+      gtagEvent('sign_up', { method: 'oauth' })
+    }
+  }, [searchParams])
 
   const recentProjects = projects.slice(0, 5)
 
@@ -63,7 +76,7 @@ export function DashboardOverview({ userId, userName }: DashboardOverviewProps) 
             Welcome back{userName ? `, ${userName}` : ''}!
           </span>
         </h1>
-        <p className="text-gray-400">Here's what's happening with your projects</p>
+        <p className="text-gray-400">Here&apos;s what&apos;s happening with your projects</p>
       </div>
 
       {/* Stats Grid */}

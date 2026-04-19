@@ -10,6 +10,7 @@ import { generateFilename, humanizeFilename } from '@/lib/filename'
 import { buildCsvManifest, downloadCsv, getCsvFilename } from '@/lib/csv'
 import { getPresetById, getVocabulary } from '@/lib/platformPresets'
 import { Button } from '@/components/ui/Button'
+import { gtagEvent } from '@/lib/gtag'
 import { UpgradeModal } from '@/components/ui/UpgradeModal'
 import { NamingPreviewTable } from '@/components/app/NamingPreviewTable'
 
@@ -115,6 +116,7 @@ export function ExportControls() {
         zipName
       )
 
+      gtagEvent('file_exported', { image_count: readyImages.length, format: 'zip' })
       addToast('success', `${readyImages.length} image(s) exported successfully!`, 4000)
       setShowSuccess(true)
       setTimeout(() => setShowSuccess(false), 3000)
@@ -135,6 +137,7 @@ export function ExportControls() {
     }
     const csv = buildCsvManifest(images, preset)
     downloadCsv(csv, getCsvFilename())
+    gtagEvent('file_exported', { image_count: images.length, format: 'csv' })
     addToast('success', 'Manifest CSV downloaded!', 4000)
   }
 
