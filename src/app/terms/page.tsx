@@ -152,8 +152,8 @@ export default function TermsPage() {
               6. Our intellectual property
             </h2>
             <p>
-              The Service itself — including the code, design, logos, and &ldquo;Renamerly&rdquo;
-              name — is owned by Build With Treez and protected by copyright and trademark law.
+              The Service itself - including the code, design, logos, and &ldquo;Renamerly&rdquo;
+              name - is owned by Build With Treez and protected by copyright and trademark law.
               These Terms do not grant you any rights to our intellectual property beyond the
               right to use the Service.
             </p>

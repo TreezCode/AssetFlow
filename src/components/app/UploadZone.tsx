@@ -94,7 +94,7 @@ export function UploadZone() {
               <div>
                 <p className="text-white font-medium">
                   {isPro ? (
-                    <>{images.length} images <span className="text-treez-purple text-sm font-normal ml-1">· Pro — unlimited</span></>
+                    <>{images.length} images <span className="text-treez-purple text-sm font-normal ml-1">· Pro - unlimited</span></>
                   ) : (
                     <span className={isAtLimit ? 'text-yellow-400' : isNearLimit ? 'text-yellow-300' : ''}>
                       {images.length} / {maxImages} images
@@ -102,7 +102,7 @@ export function UploadZone() {
                   )}
                 </p>
                 <p className="text-sm text-gray-400">
-                  {isAtLimit ? 'Limit reached — upgrade for unlimited' : 'Click or drag to add more'}
+                  {isAtLimit ? 'Limit reached - upgrade for unlimited' : 'Click or drag to add more'}
                 </p>
               </div>
             </div>
@@ -127,12 +127,12 @@ export function UploadZone() {
             <div className="flex items-center gap-1.5 mb-3">
               <Sparkles className="w-3.5 h-3.5 text-treez-cyan" />
               <p className="text-sm text-treez-cyan font-medium">
-                {pendingProjectMeta.length} file{pendingProjectMeta.length !== 1 ? 's' : ''} — SKUs &amp; descriptors will be auto-applied
+                {pendingProjectMeta.length} file{pendingProjectMeta.length !== 1 ? 's' : ''} - SKUs &amp; descriptors will be auto-applied
               </p>
             </div>
             <p className="text-gray-400 text-sm mb-1">Drop your original files or click to browse</p>
             <p className="text-xs text-gray-600">
-              Files are matched by filename — your naming work is saved
+              Files are matched by filename - your naming work is saved
             </p>
           </div>
         ) : (

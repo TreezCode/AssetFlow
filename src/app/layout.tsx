@@ -28,7 +28,7 @@ export const metadata: Metadata = {
       : process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'
   ),
   title: {
-    default: "Renamerly — Product Image Renaming Tool | Build With Treez",
+    default: "Renamerly - Product Image Renaming Tool | Build With Treez",
     template: "%s | Renamerly",
   },
   description:
@@ -72,7 +72,7 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "/",
     siteName: "Renamerly",
-    title: "Renamerly — Product Image Renaming Tool",
+    title: "Renamerly - Product Image Renaming Tool",
     description:
       "Transform product images into e-commerce ready files in seconds. No signup required.",
     images: [
@@ -86,7 +86,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Renamerly — Product Image Renaming Tool",
+    title: "Renamerly - Product Image Renaming Tool",
     description:
       "Transform product images into e-commerce ready files in seconds.",
     images: ["/opengraph-image"],
@@ -165,7 +165,7 @@ export default function RootLayout({
       className={`${inter.variable} ${spaceGrotesk.variable} h-full antialiased`}
     >
       <head>
-        {/* next/font/google handles font preloading automatically — do not add
+        {/* next/font/google handles font preloading automatically - do not add
             manual <link rel="preload"> entries, they desync on every build and 404. */}
         <script
           type="application/ld+json"

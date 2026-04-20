@@ -41,7 +41,7 @@ export function SessionPersistProvider() {
       restoreSession(saved.images, saved.currentProject)
       addToast(
         'success',
-        `Session restored — ${saved.images.length} image${saved.images.length !== 1 ? 's' : ''} recovered`,
+        `Session restored - ${saved.images.length} image${saved.images.length !== 1 ? 's' : ''} recovered`,
         5000
       )
     })

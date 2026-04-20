@@ -138,7 +138,7 @@ export default function PrivacyPage() {
                 and never transmitted to our servers.
               </li>
               <li>EXIF metadata of your images (unless you export a CSV manifest, in which case the data stays in the ZIP/CSV on your device).</li>
-              <li>Full payment card numbers — Stripe handles these directly.</li>
+              <li>Full payment card numbers - Stripe handles these directly.</li>
             </ul>
           </section>
 
@@ -167,7 +167,7 @@ export default function PrivacyPage() {
             <p className="mb-4">We rely on a small set of processors:</p>
             <ul className="list-disc pl-6 space-y-2">
               <li>
-                <strong>Supabase</strong> — database, authentication, and file
+                <strong>Supabase</strong> - database, authentication, and file
                 storage.{' '}
                 <a
                   href="https://supabase.com/privacy"
@@ -180,7 +180,7 @@ export default function PrivacyPage() {
                 .
               </li>
               <li>
-                <strong>Stripe</strong> — payment processing for Pro
+                <strong>Stripe</strong> - payment processing for Pro
                 subscriptions.{' '}
                 <a
                   href="https://stripe.com/privacy"
@@ -193,7 +193,7 @@ export default function PrivacyPage() {
                 .
               </li>
               <li>
-                <strong>Vercel</strong> — hosting, edge network, analytics.{' '}
+                <strong>Vercel</strong> - hosting, edge network, analytics.{' '}
                 <a
                   href="https://vercel.com/legal/privacy-policy"
                   target="_blank"
@@ -205,7 +205,7 @@ export default function PrivacyPage() {
                 .
               </li>
               <li>
-                <strong>Google Analytics 4</strong> — aggregate usage analytics.{' '}
+                <strong>Google Analytics 4</strong> - aggregate usage analytics.{' '}
                 <a
                   href="https://policies.google.com/privacy"
                   target="_blank"
@@ -217,7 +217,7 @@ export default function PrivacyPage() {
                 .
               </li>
               <li>
-                <strong>Google / GitHub OAuth</strong> — optional sign-in
+                <strong>Google / GitHub OAuth</strong> - optional sign-in
                 providers. We receive only your email and basic profile info.
               </li>
             </ul>
@@ -282,7 +282,7 @@ export default function PrivacyPage() {
               We use industry-standard encryption in transit (HTTPS/TLS) and at
               rest for all data stored in Supabase. Passwords are hashed with
               bcrypt. Payment data is handled exclusively by Stripe and never
-              touches our servers. No online service is 100% secure — if we
+              touches our servers. No online service is 100% secure - if we
               detect a breach affecting your data, we will notify you promptly
               and, where required, the relevant authorities.
             </p>

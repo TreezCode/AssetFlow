@@ -19,28 +19,28 @@ const FEATURE_COPY: Record<UpgradeFeature, { title: string; description: string 
     description: "You've hit the 20-image limit on the free plan. Upgrade to Pro for unlimited images per session.",
   },
   projects: {
-    title: 'Save Projects — Pro Only',
+    title: 'Save Projects - Pro Only',
     description: 'Save and reload your sessions at any time. Never lose your work again.',
   },
   templates: {
-    title: 'Save Templates — Pro Only',
+    title: 'Save Templates - Pro Only',
     description: 'Create reusable naming templates with descriptors and SKU patterns to speed up every project.',
   },
   raw: {
-    title: 'RAW Processing — Pro Only',
+    title: 'RAW Processing - Pro Only',
     description: 'Process, preview, and convert RAW files from all major camera brands.',
   },
   ai: {
-    title: 'AI Suggestions — Pro Only',
+    title: 'AI Suggestions - Pro Only',
     description: 'Let AI analyze your images and suggest accurate descriptors automatically.',
   },
   history: {
-    title: 'Export History — Pro Only',
+    title: 'Export History - Pro Only',
     description: 'Access your last 30 days of exports. Review, re-download, and track everything.',
   },
   csv: {
-    title: 'CSV Export — Pro Only',
-    description: 'Download a full product manifest CSV with every filename, SKU, descriptor, and status — ready to paste into Shopify, Etsy, or your catalog.',
+    title: 'CSV Export - Pro Only',
+    description: 'Download a full product manifest CSV with every filename, SKU, descriptor, and status - ready to paste into Shopify, Etsy, or your catalog.',
   },
 }
 

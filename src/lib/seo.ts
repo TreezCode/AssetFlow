@@ -35,10 +35,10 @@ export function scoreSeoFilename(resolvedFilename: string): SeoScore {
     score += 20
   } else if (len >= 5 && len < 10) {
     score += 10
-    tips.push('Filename is short — a more descriptive SKU will improve ranking')
+    tips.push('Filename is short - a more descriptive SKU will improve ranking')
   } else if (len > 80) {
     score += 10
-    tips.push('Filename is very long — consider a shorter SKU')
+    tips.push('Filename is very long - consider a shorter SKU')
   } else {
     tips.push('Filename is too short to be meaningful for search engines')
   }
@@ -52,7 +52,7 @@ export function scoreSeoFilename(resolvedFilename: string): SeoScore {
     score += 20
   } else if (hasUnderscores) {
     score += 8
-    tips.push('Use hyphens (-) instead of underscores — Google treats hyphens as word separators')
+    tips.push('Use hyphens (-) instead of underscores - Google treats hyphens as word separators')
   } else if (!hasHyphens) {
     tips.push('Separate words with hyphens for better SEO (e.g. nike-air-front)')
   }
@@ -63,12 +63,12 @@ export function scoreSeoFilename(resolvedFilename: string): SeoScore {
     score += 25
   } else if (letters.length >= 3) {
     score += 15
-    tips.push('Add more descriptive text to your SKU — avoid purely numeric identifiers')
+    tips.push('Add more descriptive text to your SKU - avoid purely numeric identifiers')
   } else if (letters.length >= 1) {
     score += 5
-    tips.push('Filename is mostly numeric — search engines prefer descriptive product names')
+    tips.push('Filename is mostly numeric - search engines prefer descriptive product names')
   } else {
-    tips.push('Filename has no text content — extremely poor for SEO')
+    tips.push('Filename has no text content - extremely poor for SEO')
   }
 
   // ── Factor 4: Not a generic/placeholder name (0–25 pts) ──────────────────

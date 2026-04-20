@@ -42,14 +42,14 @@ export const DESCRIPTOR_STRATEGIES: DescriptorStrategy[] = [
   {
     id: 'datetime',
     label: 'Date & Time',
-    description: 'File date and time — e.g. 2024-jul-15-2-43pm',
+    description: 'File date and time - e.g. 2024-jul-15-2-43pm',
     example: '2024-jul-15-2-43pm',
     compute: (image) => formatDatetime(image.file.lastModified),
   },
   {
     id: 'date-only',
     label: 'Date Only',
-    description: 'File date without time — e.g. 2024-jul-15',
+    description: 'File date without time - e.g. 2024-jul-15',
     example: '2024-jul-15',
     compute: (image) => formatDateOnly(image.file.lastModified),
   },
