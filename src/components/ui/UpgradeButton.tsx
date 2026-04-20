@@ -51,6 +51,21 @@ export function UpgradeButton({
         return
       }
 
+      // 409 'already_subscribed' — user already has an active/trialing/past_due
+      // subscription. Send them to the billing page where they can manage it
+      // instead of silently double-charging them.
+      if (res.status === 409) {
+        const body = (await res.json().catch(() => null)) as
+          | { code?: string; error?: string }
+          | null
+        if (body?.code === 'already_subscribed') {
+          router.push('/dashboard/billing?already_subscribed=1')
+          return
+        }
+        setError(body?.error || 'Checkout conflict. Please try again.')
+        return
+      }
+
       if (!res.ok) {
         const body = (await res.json().catch(() => null)) as { error?: string } | null
         setError(body?.error || 'Could not start checkout. Please try again.')

@@ -42,6 +42,49 @@ export async function POST(request: NextRequest) {
         .from('user_profiles')
         .update({ stripe_customer_id: customerId })
         .eq('id', user.id)
+    } else {
+      // Guard against duplicate subscriptions. A customer that already exists
+      // in Stripe may already have an active sub — double-clicking Upgrade,
+      // manually POSTing the route, or hitting this page from a stale tab
+      // would otherwise create a second subscription and double-charge.
+      //
+      // Statuses we block:
+      //   - active        → paying right now
+      //   - trialing      → in a free trial
+      //   - past_due      → payment failed; they should fix their card, not re-subscribe
+      //   - unpaid        → same, further into dunning
+      //
+      // Statuses we allow (user SHOULD be able to re-subscribe):
+      //   - canceled, incomplete, incomplete_expired, paused
+      //
+      // Supabase's user_profiles.subscription_tier can be stale (webhook
+      // latency), so we check Stripe directly as the source of truth.
+      const existing = await stripe.subscriptions.list({
+        customer: customerId,
+        status: 'all',
+        limit: 10,
+      })
+
+      const BLOCKING_STATUSES = new Set([
+        'active',
+        'trialing',
+        'past_due',
+        'unpaid',
+      ])
+      const hasActive = existing.data.some((sub) =>
+        BLOCKING_STATUSES.has(sub.status)
+      )
+
+      if (hasActive) {
+        return NextResponse.json(
+          {
+            error:
+              'You already have an active subscription. Manage it from your billing page.',
+            code: 'already_subscribed',
+          },
+          { status: 409 }
+        )
+      }
     }
 
     // Get origin for redirect URLs
