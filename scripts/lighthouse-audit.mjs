@@ -70,11 +70,15 @@ function runLighthouse(url, outBase) {
   return new Promise((resolvePromise, rejectPromise) => {
     const outputs = ['json']
     if (flags.html) outputs.push('html')
+    // Lighthouse presets: desktop|perf|experimental. Mobile is the default
+    // (no preset flag). Omit --preset when user asks for mobile.
+    const presetArg =
+      flags.preset && flags.preset !== 'mobile' ? [`--preset=${flags.preset}`] : []
     const spawnArgs = [
       '-y',
       'lighthouse@latest',
       url,
-      `--preset=${flags.preset}`,
+      ...presetArg,
       ...outputs.flatMap((o) => [`--output=${o}`]),
       `--output-path=${outBase}`,
       '--chrome-flags=--headless=new --no-sandbox',

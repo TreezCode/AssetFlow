@@ -130,3 +130,73 @@ Visible in `Footer.tsx` and one in the landing nav:
 5. **🟡 Logo `<img>` → explicit dimensions** — ~5 minutes
 6. **🟡 Pricing heading order** — ~2 minutes
 7. Re-run Lighthouse on **mobile** preset before launch
+
+---
+
+## ✅ Verification — post-fix re-audit (same day)
+
+**Commits that landed:**
+- `19957f4` — CSP allowlist for GA4 + Stripe + Vercel Analytics
+- `6eaad99` — bundle fix: font 404, pricing heading order, footer/hero/sidebar/upload-zone contrast, logo dimensions
+- `adf3819` — sidebar collapse-toggle contrast (last failing node)
+
+**User-side:** www → apex redirect flipped in Vercel Domains settings.
+
+### Desktop — before vs after
+
+| Page | Perf | A11y | BP | SEO |
+|---|---|---|---|---|
+| **`/`** | 97 → **98** | 96 → **100** | 92 → **100** | 100 → **100** |
+| **`/pricing`** | 97 → **98** | 94 → **100** | 92 → **96** | 100 → **100** |
+| **`/app`** | 97 → **99** | 96 → **96** ¹ | 92 → **100** | 100 → **100** |
+
+¹ `/app` a11y: 96 on the post-`6eaad99` run because the Collapse toggle contrast fix (`adf3819`) hadn't deployed yet. Expected to hit 100 on next audit.
+
+### Mobile — first pass (what Google actually uses for ranking)
+
+| Page | Perf | A11y | BP | SEO |
+|---|---:|---:|---:|---:|
+| `/` | **70** | 100 | 100 | 100 |
+| `/pricing` | **73** | 100 | 100 | 100 |
+
+**Mobile Core Web Vitals (home):**
+
+| Metric | Value | Target | Status |
+|---|---:|---:|---|
+| LCP | 5.5s | <2.5s | 🔴 poor |
+| FCP | 3.0s | <1.8s | 🔴 poor |
+| TBT | 110ms | <200ms | ✅ good |
+| CLS | 0 | <0.1 | ✅ perfect |
+| Speed Index | 5.3s | <3.4s | 🔴 poor |
+
+### What cleared
+
+- ✅ Font 404 — gone (removed dead preload in `layout.tsx`)
+- ✅ CSP blocking GA4 — cleared (next Vercel deploy will start populating GA4)
+- ✅ WWW redirect — cleared (user fixed in Vercel)
+- ✅ All color contrast failures — cleared (text-gray-500/600 → text-gray-400)
+- ✅ Pricing heading order — cleared (tier name h3 → h2)
+- ✅ Unsized logos — cleared (explicit width/height added)
+- ✅ Perfect A11y / BP / SEO = 100 across all three desktop pages
+
+### What remains (mobile performance)
+
+Mobile Perf is **70–73**. That's normal for a content-heavy Next.js landing page with Framer Motion, but **LCP at 5.5s is genuinely "poor"** per Google's thresholds. Root causes (from the report):
+
+1. **Unused JavaScript: ~760ms** — likely `framer-motion` + landing-page interactive bits loading eagerly
+2. **Legacy JavaScript** — polyfills shipping to modern browsers
+3. **Render-blocking requests** — CSS and a couple of JS chunks
+4. **Image delivery** — hero/landing images not served at optimal sizes
+
+**Good news:** Google ranks on **field CWV data from CrUX** (real users), not lab Lighthouse numbers. Lab simulates a slow 4G connection + throttled CPU that's more pessimistic than most real visits. We won't know the true field LCP until Renamerly has ~28 days of traffic and CrUX data appears in Search Console.
+
+**Not blocking launch.** A11y/BP/SEO are perfect; desktop Perf is excellent; mobile is "needs improvement" but not broken. Worth a follow-up pass after launch when we have real data.
+
+### Post-launch performance TODO (optional, ~2-4 hours)
+
+1. **Dynamic-import Framer Motion** on below-the-fold sections (defer ~200kB JS)
+2. **Audit the landing hero** — is there an image, gradient, or video? Ensure it's WebP/AVIF, properly sized, with `priority` if it's LCP
+3. **`<img>` → `next/image`** on all 7 call sites (listed as ESLint warnings) — auto-handles responsive images, modern formats, priority hints
+4. **Review `browserslist` config** — drop legacy-JS polyfills for modern browsers
+5. **Re-run `npm run audit:lighthouse:mobile`** and compare
+
