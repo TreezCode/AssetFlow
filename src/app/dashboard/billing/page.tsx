@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useState, useCallback } from 'react'
+import { useEffect, useState, useCallback, useMemo } from 'react'
 import { motion } from 'framer-motion'
 import { Crown, Zap, TrendingUp, Calendar, CreditCard, ExternalLink, Loader2 } from 'lucide-react'
 import Link from 'next/link'
@@ -22,7 +22,11 @@ export default function BillingPage() {
   const [usage, setUsage] = useState<UsageStats | null>(null)
   const [loading, setLoading] = useState(true)
   const [portalLoading, setPortalLoading] = useState(false)
-  const supabase = createClient()
+  // Memoise the Supabase client so its ref is stable across renders.
+  // Without this, createClient() returns a new instance on every render,
+  // which makes loadBillingData's useCallback re-compute, which re-fires
+  // the useEffect — producing a render loop and duplicate network requests.
+  const supabase = useMemo(() => createClient(), [])
 
   const loadBillingData = useCallback(async () => {
     try {
@@ -44,14 +48,17 @@ export default function BillingPage() {
         })
       }
 
-      // Get current month usage
+      // Get current month usage. Use .maybeSingle() — a brand-new user (or
+      // a Pro user who hasn't processed any images this month) has no row
+      // yet. .single() would return PostgREST 406 Not Acceptable because it
+      // demands exactly one row; .maybeSingle() returns null for 0 rows.
       const currentMonth = new Date().toISOString().slice(0, 7) // YYYY-MM
       const { data: usageData } = await supabase
         .from('usage_tracking')
         .select('images_processed, projects_created')
         .eq('user_id', user.id)
         .eq('month', currentMonth)
-        .single()
+        .maybeSingle()
 
       setUsage({
         images_processed: usageData?.images_processed || 0,
