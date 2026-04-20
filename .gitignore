@@ -40,5 +40,10 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
+# unlighthouse / lighthouse reports
+.unlighthouse/
+lighthouse-*.html
+lighthouse-*.json
+
 # Local development docs (analysis, artifacts, planning)
 # /docs/docs-local/

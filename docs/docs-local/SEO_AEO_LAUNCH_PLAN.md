@@ -57,8 +57,8 @@
 - `sitemap.ts` and `robots.ts` now hard-code `https://renamerly.com` when `VERCEL_ENV === 'production'`. Fixed.
 
 ### 2.2 Expand sitemap ✅ / 🔧
-- ✅ `/`, `/pricing` (0.9), `/app` (0.8) are in sitemap.
-- 🔧 Add `/changelog`, `/about`, `/privacy`, `/terms`, `/blog/[slug]` as those pages are built.
+- ✅ `/`, `/pricing` (0.9), `/app` (0.8), `/privacy` (0.3), `/terms` (0.3) are in sitemap.
+- 🔧 Add `/changelog`, `/about`, `/blog/[slug]` as those pages are built.
 
 ### 2.3 Per-page metadata ✅ / 🔧
 - ✅ `/pricing` — unique title, description, canonical, OG (`src/app/pricing/layout.tsx`).
@@ -258,6 +258,8 @@ Once you have these URLs, tell Cascade and the `Organization` schema block will 
 - [x] **FAQPage + Product/Offer JSON-LD** on `/pricing`
 - [x] **AI-crawler allow rules** in `robots.ts`
 - [x] **`public/llms.txt`**
+- [x] **`/privacy` + `/terms` pages** (starter content with placeholders for contact email + governing state)
+- [x] **Footer Legal column** linking to Privacy and Terms
 
 ### 🔧 Ask Cascade to do (optional / blocked)
 - [ ] Add `FAQPage` JSON-LD to landing page (need FAQ copy)
@@ -267,6 +269,7 @@ Once you have these URLs, tell Cascade and the `Organization` schema block will 
 - [ ] Add footer nav links to all top-level pages
 
 ### 👤 You need to do manually
+- [ ] **Fill in Privacy/Terms placeholders** (`CONTACT_EMAIL`, `GOVERNING_STATE`) in `src/app/privacy/page.tsx` and `src/app/terms/page.tsx` before public launch. Have a lawyer review.
 - [ ] Verify `renamerly.com` in Google Search Console (DNS TXT record)
 - [ ] Submit `sitemap.xml` in GSC
 - [ ] Import GSC → Bing Webmaster Tools + submit sitemap

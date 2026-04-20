@@ -43,7 +43,7 @@ export function Footer() {
   return (
     <footer className="bg-deep-space border-t border-white/10 w-full">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 w-full">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-12 w-full">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 md:gap-12 w-full">
           {/* Logo Section - Prominent Brand Display */}
           <div className="flex flex-col items-center md:items-start">
             <div className="mb-8">
@@ -112,6 +112,26 @@ export function Footer() {
               Try It Free
               <span aria-hidden="true">&rarr;</span>
             </Link>
+          </div>
+
+          <div className="flex flex-col items-center md:items-start">
+            <h3 className="text-sm font-semibold text-white mb-4">Legal</h3>
+            <nav className="flex flex-col gap-2 items-center md:items-start">
+              <Link
+                href="/privacy"
+                className="group text-sm text-gray-400 hover:text-treez-cyan transition-colors duration-300 inline-flex items-center gap-2"
+              >
+                <span className="w-1 h-1 rounded-full bg-gray-600 group-hover:bg-treez-cyan transition-colors duration-300" />
+                Privacy Policy
+              </Link>
+              <Link
+                href="/terms"
+                className="group text-sm text-gray-400 hover:text-treez-cyan transition-colors duration-300 inline-flex items-center gap-2"
+              >
+                <span className="w-1 h-1 rounded-full bg-gray-600 group-hover:bg-treez-cyan transition-colors duration-300" />
+                Terms of Service
+              </Link>
+            </nav>
           </div>
         </div>
 
